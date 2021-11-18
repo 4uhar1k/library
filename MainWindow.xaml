@@ -9,6 +9,6 @@
     <Grid>
         <Label FontSize="35" Margin="400,100,0,0">Библиотека КРСШЛ 54</Label>
         <Button Width="100" Height="100" Margin="-450,-150,0,0" FontSize="70" Click="addUser" Content="+"></Button>
-        <Button Width="500" Height="100" Margin="0,150,0,0" FontSize="70">Список</Button>
+        <Button Width="500" Height="100" Margin="0,150,0,0" FontSize="70" Click="showList">Список</Button>
     </Grid>
 </Window>

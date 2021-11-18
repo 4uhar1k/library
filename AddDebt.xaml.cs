@@ -33,7 +33,7 @@ namespace library
             string books = bookText.Text;
             string grade = gradeText.Text;
             string date1 = DateTime.Now.ToString("dd/MM/yyyy");
-            string date2 = DateTime.Now.AddDays(10).ToString("dd/MM/yyyy");
+            string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd/MM/yyyy");
 
             Debt auslander = null;
             using (ApplicationContext db = new ApplicationContext())

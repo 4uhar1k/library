@@ -32,5 +32,12 @@ namespace library
             AddDebt adi = new AddDebt();
             adi.Show();
         }
+
+        public void showList(object sender, EventArgs e)
+        {
+            this.Hide();
+            List adi = new List();
+            adi.Show();
+        }
     }
 }

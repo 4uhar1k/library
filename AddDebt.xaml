@@ -14,7 +14,9 @@
         <Label Width="400" Height="40" Margin="-220,30,0,0" FontSize="25">Книга:</Label>
         <TextBox Name="bookText" Width="500" Height="40" Margin="-120,120,0,0"></TextBox>
         <Label Width="400" Height="40" Margin="-220,230,0,0" FontSize="25">Класс:</Label>
-        <TextBox Name="gradeText" FontSize="25" Width="160" Height="40" Margin="-230,239,0,0"></TextBox>
+        <TextBox Name="gradeText" FontSize="25" Width="160" Height="40" Margin="-290,239,0,0"></TextBox>
+        <Label Width="180" Height="45" Margin="200,230,0,0" FontSize="25">Срок (дней):</Label>
+        <TextBox Name="limitText" FontSize="25" Width="160" Height="40" Margin="490,239,0,0"></TextBox>
         <Button Width="150" Height="50" Margin="0,350,0,0" Content="Готово" FontSize="25" Click="addInfo"></Button>
 
     </Grid>
