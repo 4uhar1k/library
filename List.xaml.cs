@@ -19,11 +19,16 @@ namespace library
     /// </summary>
     public partial class List : Window
     {
+        ApplicationContext db;
+        //StackPanel[] stacks = new StackPanel[20] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10, panel11, panel12, panel13, panel14, panel15, panel16, panel17, panel18, panel19, panel20 };
         public List()
         {
             InitializeComponent();
+            db = new ApplicationContext();
+            foreach (Debt debt in db.debts)
+            {
 
-            
+            }
         }
 
 

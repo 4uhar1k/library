@@ -47,7 +47,7 @@ namespace library
                 Debt debt = new Debt(name, surname, books, grade, date1, date2);
                 db.debts.Add(debt);
                 db.SaveChanges();
-                MessageBox.Show(date1 + " " + date2);
+                MessageBox.Show("Запись успешно сохранена.");
                 this.Hide();
                 MainWindow maw = new MainWindow();
                 maw.Show();
