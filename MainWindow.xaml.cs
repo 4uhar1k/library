@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,20 @@ using System.Windows.Shapes;
 namespace library
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void addUser(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddDebt adi = new AddDebt();
+            adi.Show();
         }
     }
 }
