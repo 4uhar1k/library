@@ -148,7 +148,7 @@ namespace library
                     //List li = new List();
                     // li.Show();
                     //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
-                    if (debt.surname.Contains(searchBar.Text.ToLower()))
+                    if (debt.surname.Contains(searchBar.Text.ToUpper()))
                     {
                         stacks[i].Visibility = Visibility.Visible;
                         nameArray[i].Content = debt.name;

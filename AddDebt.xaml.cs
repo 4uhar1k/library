@@ -28,10 +28,10 @@ namespace library
 
         public void addInfo(object sender, EventArgs e)
         {
-            string name = nameText.Text.ToLower();
-            string surname = surnameText.Text.ToLower();
-            string books = bookText.Text.ToLower();
-            string grade = gradeText.Text.ToLower();
+            string name = nameText.Text.ToUpper();
+            string surname = surnameText.Text.ToUpper();
+            string books = bookText.Text.ToUpper();
+            string grade = gradeText.Text.ToUpper();
             string date1 = DateTime.Now.ToString("dd/MM/yyyy");
             string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd/MM/yyyy");
 
