@@ -21,13 +21,18 @@ namespace library
     {
         ApplicationContext db;
         //StackPanel[] stacks = new StackPanel[20] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10, panel11, panel12, panel13, panel14, panel15, panel16, panel17, panel18, panel19, panel20 };
+        
         public List()
         {
             InitializeComponent();
+            Label[] nameArray = new Label[4] { Name1, Name2, Name3, Name4 };
             db = new ApplicationContext();
+            int i = 0;
             foreach (Debt debt in db.debts)
             {
 
+                nameArray[i].Content = $"{debt.name}";//{debt.surname} {debt.grade} {debt.book} {debt.take_date} {debt.return_date}";
+                i++;//infolabel.Content += "\n";
             }
         }
 
