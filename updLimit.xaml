@@ -1,0 +1,13 @@
+﻿<Window x:Class="library.updLimit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:library"
+        mc:Ignorable="d"
+        Title="updLimit" Height="250" Width="400">
+    <Grid>
+        <DatePicker Name="datePicker" HorizontalAlignment="Left" Margin="104,18,0,0" FontSize="20" VerticalAlignment="Top" Height="125" Width="189"/>
+        <Button Width="100" Height="50" Margin="0,140,0,0" Content="Готово" FontSize="20" Click="readyButton"></Button>
+    </Grid>
+</Window>

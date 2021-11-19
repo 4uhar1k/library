@@ -5,151 +5,111 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="List" Height="500" Width="1000">
+        Title="List" Height="500" Width="1200">
     <ScrollViewer CanContentScroll="True">
         <StackPanel>
-        <StackPanel Height="50" Margin="0,50,0,0">
-                <Label Width="100" Name="Name1" FontSize="20" Margin="-850,0,0,0">aaa</Label>
-                <Label Width="100" Name="Surname1" FontSize="20" Margin="-570,-50,0,0"></Label>
-                <Label Width="100" Name="Book1" FontSize="20" Margin="-280,-50,0,0"></Label>
-                <Label Width="100" Name="TakeDate1" FontSize="20" Margin="50,-50,0,0"></Label>
-                <Label Width="100" Name="RetutrnDate1" FontSize="20" Margin="330,-50,0,0"></Label>
-                <Button Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу"></Button>
+        <StackPanel Name ="panel1" Height="50" Margin="0,50,0,0">
+            
+                <Label Width="100" Name="Name1" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname1" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade1" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book1" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate1" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate1" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit1" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
             </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name2" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname2" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book2" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate2" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate2" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name3" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname3" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book3" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate3" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate3" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name4" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname4" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book4" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate4" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate4" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-            <Label Content="Name5" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname5" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book5" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate5" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate5" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-            <Label Content="Name6" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname6" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book6" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate6" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate6" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-            <Label Content="Name7" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname7" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book7" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate7" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate7" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-            <Label Content="Name8" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Content="Surname8" FontSize="20" Margin="100,-36,0,0"></Label>
-            <Label Content="Book8" FontSize="20" Margin="250,-36,0,0"></Label>
-            <Label Content="TakeDate8" FontSize="20" Margin="350,-36,0,0"></Label>
-            <Label Content="RetutrnDate8" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name9" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname9" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book9" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate9" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate9" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name10" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname10" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book10" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate10" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate10" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name11" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname11" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book11" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate11" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate11" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name12" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname12" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book12" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate12" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate12" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name13" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname13" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book13" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate13" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate13" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name14" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname14" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book14" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate14" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate14" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name15" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname15" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book15" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate15" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate15" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name16" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname16" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book16" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate16" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate16" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name17" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname17" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book17" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate17" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate17" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name18" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname18" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book18" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate18" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate18" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-                <Label Name="Name19" FontSize="20" Margin="0,5,0,0"></Label>
-                <Label Name="Surname19" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book19" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate19" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate19" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
-        <StackPanel Height="50">
-            <Label Name="Name20" FontSize="20" Margin="0,5,0,0"></Label>
-            <Label Name="Surname20" FontSize="20" Margin="100,-36,0,0"></Label>
-                <Label Name="Book20" FontSize="20" Margin="250,-36,0,0"></Label>
-                <Label Name="TakeDate20" FontSize="20" Margin="350,-36,0,0"></Label>
-                <Label Name="RetutrnDate20" FontSize="20" Margin="500,-36,0,0"></Label>
-        </StackPanel>
+            <StackPanel Name ="panel2" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name2" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname2" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade2" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book2" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate2" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate2" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit2" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel3" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name3" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname3" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade3" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book3" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate3" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate3" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit3" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel4" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name4" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname4" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade4" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book4" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate4" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate4" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit4" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel5" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name5" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname5" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade5" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book5" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate5" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate5" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit5" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel6" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name6" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname6" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade6" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book6" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate6" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate6" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit6" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel7" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name7" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname7" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade7" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book7" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate7" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate7" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit7" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel8" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name8" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname8" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade8" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book8" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate8" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate8" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit8" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel9" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name9" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname9" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade9" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book9" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate9" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate9" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit9" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel10" Height="50" Margin="0,0,0,0">
+                <Label Width="100" Name="Name10" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
+                <Label Width="100" Name="Surname10" FontSize="20" Margin="-770,-50,0,0"></Label>
+                <Label Width="100" Name="Grade10" FontSize="20" Margin="-480,-50,0,0"></Label>
+                <Label Width="100" Name="Book10" FontSize="20" Margin="-150,-50,0,0"></Label>
+                <Label Width="100" Name="TakeDate10" FontSize="20" Margin="130,-50,0,0"></Label>
+                <Label Width="100" Name="RetutrnDate10" FontSize="20" Margin="410,-50,0,0"></Label>
+                <Button Name="limit10" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+            </StackPanel>
+        
         </StackPanel>
     </ScrollViewer>
 </Window>
