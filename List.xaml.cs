@@ -27,6 +27,7 @@ namespace library
         Label[] takeArray;
         Label[] returnArray;
         Button[] limitArray;
+        Button[] deleteArray;
         public List()
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace library
             takeArray = new Label[10] { TakeDate1, TakeDate2, TakeDate3, TakeDate4, TakeDate5, TakeDate6, TakeDate7, TakeDate8, TakeDate9, TakeDate10 };
             returnArray = new Label[10] { RetutrnDate1, RetutrnDate2, RetutrnDate3, RetutrnDate4, RetutrnDate5, RetutrnDate6, RetutrnDate7, RetutrnDate8, RetutrnDate9, RetutrnDate10 };
             limitArray = new Button[10] { limit1, limit2, limit3, limit4, limit5, limit6, limit7, limit8, limit9, limit10 };
+            deleteArray = new Button[10] { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10};
             db = new ApplicationContext();
             int i = 0;
             foreach (Debt debt in db.debts)
@@ -76,6 +78,40 @@ namespace library
             this.Hide();
             updLimit up = new updLimit(name.Content.ToString(), surname.Content.ToString(), grade.Content.ToString(), book.Content.ToString(), take.Content.ToString(), ret.Content.ToString());
             up.Show();
+        }
+
+        public void deleteDebt(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            //MessageBox.Show(testarr[0].ToString());
+            Label name = nameArray[Array.IndexOf(deleteArray, btn)];
+            Label surname = surnameArray[Array.IndexOf(deleteArray, btn)];
+            Label grade = gradeArray[Array.IndexOf(deleteArray, btn)];
+            Label book = bookArray[Array.IndexOf(deleteArray, btn)];
+            Label take = takeArray[Array.IndexOf(deleteArray, btn)];
+            Label ret = returnArray[Array.IndexOf(deleteArray, btn)];
+            //MessageBox
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите вычеркнуть ученика из списка?", "", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.No:
+                    return;
+                case MessageBoxResult.Yes:
+                    Debt user;
+
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        user = db.debts.Where(b => b.name == name.Content.ToString() && b.surname == surname.Content.ToString() && b.grade == grade.Content.ToString() && b.book == book.Content.ToString() && b.take_date == take.Content.ToString() && b.return_date == ret.Content.ToString()).FirstOrDefault();
+                        db.debts.Remove(user);
+                        db.SaveChanges();
+                        this.Hide();
+                        MessageBox.Show("Пользователь был успешно удален.");
+                        List li = new List();
+                        li.Show();
+                    }
+                    break;
+            }
+            
         }
 
     }

@@ -17,7 +17,7 @@
                 <Label Width="100" Name="TakeDate1" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate1" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit1" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete1" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel2" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name2" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -27,7 +27,7 @@
                 <Label Width="100" Name="TakeDate2" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate2" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit2" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete2" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel3" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name3" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -37,7 +37,7 @@
                 <Label Width="100" Name="TakeDate3" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate3" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit3" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete3" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel4" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name4" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -47,7 +47,7 @@
                 <Label Width="100" Name="TakeDate4" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate4" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit4" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete4" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel5" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name5" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -57,7 +57,7 @@
                 <Label Width="100" Name="TakeDate5" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate5" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit5" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete5" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel6" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name6" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -67,7 +67,7 @@
                 <Label Width="100" Name="TakeDate6" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate6" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit6" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete6" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel7" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name7" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -77,7 +77,7 @@
                 <Label Width="100" Name="TakeDate7" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate7" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit7" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete7" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel8" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name8" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -87,7 +87,7 @@
                 <Label Width="100" Name="TakeDate8" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate8" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit8" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete8" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel9" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name9" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -97,7 +97,7 @@
                 <Label Width="100" Name="TakeDate9" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate9" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit9" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete9" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
             <StackPanel Name ="panel10" Height="50" Margin="0,0,0,0">
                 <Label Width="100" Name="Name10" FontSize="20" Margin="-1050,0,0,0">aaa</Label>
@@ -107,7 +107,7 @@
                 <Label Width="100" Name="TakeDate10" FontSize="20" Margin="130,-50,0,0"></Label>
                 <Label Width="100" Name="RetutrnDate10" FontSize="20" Margin="410,-50,0,0"></Label>
                 <Button Name="limit10" Width="100" Height="30" Margin="650,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить"></Button>
+                <Button Name="delete10" Width="100" Height="30" Margin="870,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
             </StackPanel>
         
         </StackPanel>
