@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="List" Height="500" Width="1200">
     <ScrollViewer CanContentScroll="True">
+        
         <StackPanel>
+            <Button Width="100" Height="50" Click="mainMenu">Главное меню</Button>
         <StackPanel Name ="panel1" Height="50" Margin="0,50,0,0">
             
                 <Label Width="100" Name="Name1" FontSize="20" Margin="-1050,0,0,0">aaa</Label>

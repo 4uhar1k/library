@@ -111,7 +111,15 @@ namespace library
                     }
                     break;
             }
+
             
+            
+        }
+        public void mainMenu(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainWindow ma = new MainWindow();
+            ma.Show();
         }
 
     }
