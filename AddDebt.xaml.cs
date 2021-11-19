@@ -28,17 +28,17 @@ namespace library
 
         public void addInfo(object sender, EventArgs e)
         {
-            string name = nameText.Text;
-            string surname = surnameText.Text;
-            string books = bookText.Text;
-            string grade = gradeText.Text;
+            string name = nameText.Text.ToLower();
+            string surname = surnameText.Text.ToLower();
+            string books = bookText.Text.ToLower();
+            string grade = gradeText.Text.ToLower();
             string date1 = DateTime.Now.ToString("dd/MM/yyyy");
             string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd/MM/yyyy");
 
             Debt auslander = null;
             using (ApplicationContext db = new ApplicationContext())
             {
-                auslander = db.debts.Where(b => b.name == name).FirstOrDefault();
+                auslander = db.debts.Where(b => b.book == books).FirstOrDefault();
             }
 
 

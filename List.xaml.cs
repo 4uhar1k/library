@@ -20,6 +20,7 @@ namespace library
     public partial class List : Window
     {
         ApplicationContext db;
+        StackPanel[] stacks;
         Label[] nameArray;
         Label[] surnameArray;
         Label[] gradeArray;
@@ -31,7 +32,7 @@ namespace library
         public List()
         {
             InitializeComponent();
-            StackPanel[] stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10};
+            stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10};
             for (int j = 0;j<10;j++)
             {
                 stacks[j].Visibility = Visibility.Hidden;
@@ -120,6 +121,52 @@ namespace library
             this.Hide();
             MainWindow ma = new MainWindow();
             ma.Show();
+        }
+
+        public void search(object sender, EventArgs e)
+        {
+            Debt user;
+            string s = searchBar.Text.ToUpper();
+            
+            //s = s.ToUpper();
+            int i = 0;
+            //MessageBox.Show("ШИПАЧЕВ".Contains("ЕГОР").ToString());
+            
+                //MessageBox.Show($"{user.surname.Contains(searchBar.Text.ToLower())}");
+                for (int j = 0; j < 10; j++)
+                {
+                    stacks[j].Visibility = Visibility.Hidden;
+                }
+
+                foreach (Debt debt in db.debts)
+                {
+                    //MessageBox.Show(searchBar.Text);
+
+                    //MessageBox.Show($"{debt.name} , {debt.surname}, {debt.grade}, {debt.book}");
+
+                    //this.Hide();
+                    //List li = new List();
+                    // li.Show();
+                    //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
+                    if (debt.surname.Contains(searchBar.Text.ToLower()))
+                    {
+                        stacks[i].Visibility = Visibility.Visible;
+                        nameArray[i].Content = debt.name;
+                        surnameArray[i].Content = debt.surname;
+                        gradeArray[i].Content = debt.grade;
+                        bookArray[i].Content = debt.book;
+                        takeArray[i].Content = debt.take_date;
+                        returnArray[i].Content = debt.return_date;
+                        i++;
+                    }
+                    
+                    
+                }
+            
+            
+
+           
+            
         }
 
     }
