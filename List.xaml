@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="List" Height="500" Width="1200">
+        Title="List" Height="500" Width="1200" WindowStyle="None">
     <ScrollViewer CanContentScroll="True">
         
         <StackPanel>
+            <Button Width="35" Height="35" Margin="1000,+10,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
+            <Button Width="35" Height="35" Margin="900,-35,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
             <Button Width="100" Height="50" Margin="-1000,0,0,0" Click="mainMenu">Главное меню</Button>
             <TextBox Name="searchBar" Width="500" Height="50" Margin="350,-40,0,0"></TextBox>
             <Button Width="100" Height="50" Margin="1000,-50,0,0" FontSize="20" Click="search">Поиск</Button>

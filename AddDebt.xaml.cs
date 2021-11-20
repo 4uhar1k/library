@@ -53,5 +53,15 @@ namespace library
                 maw.Show();
             }
         }
+
+        public void close(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        public void min(object sender, EventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

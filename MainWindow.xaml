@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="CanMinimize" WindowStyle="None">
     <Grid>
+        <Button Width="35" Height="35" Margin="700,-400,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
+        <Button Width="35" Height="35" Margin="600,-400,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
         <Label FontSize="35" Margin="400,100,0,0">VVMLibrary</Label>
         <Button Width="100" Height="100" Margin="-450,-150,0,0" FontSize="70" Click="addUser" Content="+"></Button>
         <Button Width="500" Height="100" Margin="0,150,0,0" FontSize="70" Click="showList">Список</Button>

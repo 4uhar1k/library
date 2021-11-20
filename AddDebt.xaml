@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="AddDebt" Height="450" Width="800">
+        Title="AddDebt" Height="450" Width="800" WindowStyle="None">
     <Grid>
+        <Button Width="35" Height="35" Margin="700,-400,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
+        <Button Width="35" Height="35" Margin="600,-400,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
         <Label Width="400" Height="40" Margin="-220,-370,0,0" FontSize="25">Имя:</Label>
         <TextBox Name="nameText" Width="500" FontSize="25" Height="40" Margin="-120,-280,0,0"></TextBox>
         <Label  Width="400" Height="40" Margin="-220,-170,0,0" FontSize="25">Фамилия:</Label>
