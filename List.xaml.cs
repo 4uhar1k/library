@@ -29,6 +29,7 @@ namespace library
         Label[] returnArray;
         Button[] limitArray;
         Button[] deleteArray;
+        Label[] limitcheckArray;
         public List()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace library
             returnArray = new Label[10] { RetutrnDate1, RetutrnDate2, RetutrnDate3, RetutrnDate4, RetutrnDate5, RetutrnDate6, RetutrnDate7, RetutrnDate8, RetutrnDate9, RetutrnDate10 };
             limitArray = new Button[10] { limit1, limit2, limit3, limit4, limit5, limit6, limit7, limit8, limit9, limit10 };
             deleteArray = new Button[10] { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10};
+            limitcheckArray = new Label[10] { limitcheck1, limitcheck2, limitcheck3, limitcheck4, limitcheck5, limitcheck6, limitcheck7, limitcheck8, limitcheck9, limitcheck10};
             db = new ApplicationContext();
             int i = 0;
             foreach (Debt debt in db.debts)
@@ -52,12 +54,25 @@ namespace library
                 if (debt!=null)
                 {
                     stacks[i].Visibility = Visibility.Visible;
+                    limitcheckArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = debt.name;
                     surnameArray[i].Content= debt.surname;
                     gradeArray[i].Content = debt.grade;
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1==t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (t1<t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
+                    }
                     i++;//infolabel.Content += "\n";
                 }
                 
