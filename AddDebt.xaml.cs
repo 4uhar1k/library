@@ -63,5 +63,12 @@ namespace library
         {
             WindowState = WindowState.Minimized;
         }
+
+        public void mainMenu(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainWindow ma = new MainWindow();
+            ma.Show();
+        }
     }
 }
