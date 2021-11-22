@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="List" Height="500" Width="1600" WindowStyle="None">
+        Title="List" Height="500" Width="1800" WindowStyle="None">
     <ScrollViewer CanContentScroll="True">
         
         <StackPanel>
@@ -14,6 +14,9 @@
             <Button Width="100" Height="50" Margin="-1000,0,0,0" Click="mainMenu">Главное меню</Button>
             <TextBox Name="searchBar" Width="500" Height="50" Margin="350,-40,0,0"></TextBox>
             <Button Width="100" Height="50" Margin="1000,-50,0,0" FontSize="20" Click="search">Поиск</Button>
+            <CheckBox Name="debters" Width="120"  Margin="-1000,0,0,0">Только должники</CheckBox>
+            <Button Name="debtersbut" Width="50" Height="20" Margin="-770,-17,0,0" Click="onlyDebt">OK</Button>
+
             <Label Width="150"  FontSize="20" Margin="-1400,20,0,0" FontFamily="Times New Roman">Имя</Label>
             <Label Width="150"  FontSize="20" Margin="-1070,-37,-35,-12" FontFamily="Times New Roman">Фамилия</Label>
             <Label Width="100"  FontSize="20" Margin="-680,-37,-35,-12" FontFamily="Times New Roman">Класс</Label>

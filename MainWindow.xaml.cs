@@ -21,6 +21,7 @@ namespace library
     /// </summary>
     public partial class MainWindow : Window
     {
+        ApplicationContext db = new ApplicationContext();
         public MainWindow()
         {
             InitializeComponent();
@@ -49,5 +50,7 @@ namespace library
         {
             WindowState = WindowState.Minimized;
         }
+
+       
     }
 }

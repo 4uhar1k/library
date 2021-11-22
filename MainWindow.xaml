@@ -12,6 +12,6 @@
         <Label FontSize="35" Margin="400,100,0,0">VVMLibrary</Label>
         <Button Width="100" Height="100" Margin="-450,-150,0,0" FontSize="70" Click="addUser" Content="+"></Button>
         <Button Width="500" Height="100" Margin="150,300,150,50" FontSize="70" Click="showList">Список</Button>
-        <Button Width="190" Height="50" Margin="410,225,200,175" FontSize="31" Click="showList">Должники</Button>
+        
     </Grid>
 </Window>
