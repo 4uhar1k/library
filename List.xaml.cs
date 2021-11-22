@@ -62,6 +62,7 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+             
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1==t2)
@@ -141,7 +142,7 @@ namespace library
 
         public void search(object sender, EventArgs e)
         {
-            Debt user;
+            //Debt user;
             string s = searchBar.Text.ToUpper();
             
             //s = s.ToUpper();
@@ -167,13 +168,32 @@ namespace library
                     if (debt.surname.StartsWith(searchBar.Text.ToUpper()))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                     {
                         stacks[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Visibility = Visibility.Hidden;
                         nameArray[i].Content = debt.name;
                         surnameArray[i].Content = debt.surname;
                         gradeArray[i].Content = debt.grade;
                         bookArray[i].Content = debt.book;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
-                        i++;
+                    Debt userTest = null;
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
+                    }
+                    //MessageBox.Show(userTest.name);
+                    DateTime t1 = Convert.ToDateTime(userTest.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (t1 < t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
+                    }
+                    i++;
                     }
                     
                     
@@ -218,12 +238,13 @@ namespace library
                                 limitcheckArray[i].Foreground = Brushes.DarkOrange;
                             if (t1<t2)
                                 limitcheckArray[i].Foreground = Brushes.Red;
+                            i++;
 
                         }
 
 
 
-                        i++;//infolabel.Content += "\n";
+                        //infolabel.Content += "\n";
                     }
 
                 }
