@@ -134,7 +134,7 @@
                 <Button Name="delete10" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck10" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
             </StackPanel>
-        
+            
         </StackPanel>
     </ScrollViewer>
 </Window>
