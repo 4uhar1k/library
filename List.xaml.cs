@@ -30,6 +30,7 @@ namespace library
         Button[] limitArray;
         Button[] deleteArray;
         Label[] limitcheckArray;
+        int n = 0;
         public List()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+             
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1==t2)
@@ -140,7 +142,7 @@ namespace library
 
         public void search(object sender, EventArgs e)
         {
-            Debt user;
+            //Debt user;
             string s = searchBar.Text.ToUpper();
             
             //s = s.ToUpper();
@@ -166,13 +168,32 @@ namespace library
                     if (debt.surname.StartsWith(searchBar.Text.ToUpper()))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                     {
                         stacks[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Visibility = Visibility.Hidden;
                         nameArray[i].Content = debt.name;
                         surnameArray[i].Content = debt.surname;
                         gradeArray[i].Content = debt.grade;
                         bookArray[i].Content = debt.book;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
-                        i++;
+                    Debt userTest = null;
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
+                    }
+                    //MessageBox.Show(userTest.name);
+                    DateTime t1 = Convert.ToDateTime(userTest.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (t1 < t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
+                    }
+                    i++;
                     }
                     
                     
@@ -182,6 +203,166 @@ namespace library
 
             
 
+        }
+
+        public void onlyDebt(object sender, EventArgs e)
+        {
+            int i = 0;
+            
+            if (debters.IsChecked == true)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    stacks[j].Visibility = Visibility.Hidden;
+                }
+                foreach (Debt debt in db.debts)
+                {
+                    if (debt != null)
+                    {
+                        
+                        DateTime t1 = Convert.ToDateTime(debt.return_date);
+                        DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                        if (t1 == t2 || t1 < t2)
+                        {
+                            
+                            stacks[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Visibility = Visibility.Hidden;
+                            nameArray[i].Content = debt.name;
+                            surnameArray[i].Content = debt.surname;
+                            gradeArray[i].Content = debt.grade;
+                            bookArray[i].Content = debt.book;
+                            takeArray[i].Content = debt.take_date;
+                            returnArray[i].Content = debt.return_date;
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            if (t1==t2)
+                                limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                            if (t1<t2)
+                                limitcheckArray[i].Foreground = Brushes.Red;
+                            i++;
+
+                        }
+
+
+
+                        //infolabel.Content += "\n";
+                    }
+
+                }
+                
+            }
+            else
+            {
+                foreach (Debt debt in db.debts)
+                {
+                    if (debt != null)
+                    {
+                        
+                        stacks[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Visibility = Visibility.Hidden;
+                        nameArray[i].Content = debt.name;
+                        surnameArray[i].Content = debt.surname;
+                        gradeArray[i].Content = debt.grade;
+                        bookArray[i].Content = debt.book;
+                        takeArray[i].Content = debt.take_date;
+                        returnArray[i].Content = debt.return_date;
+                        DateTime t1 = Convert.ToDateTime(debt.return_date);
+                        DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                        if (t1 == t2)
+                        {
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                        }
+                        else if (t1 < t2)
+                        {
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Foreground = Brushes.Red;
+                        }
+                        i++;//infolabel.Content += "\n";
+                    }
+
+                }
+            }
+
+        }
+
+        public void nextpage(object sender, EventArgs e)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                stacks[j].Visibility = Visibility.Hidden;
+            }
+            
+            db = new ApplicationContext();
+            int i = 0;
+            n += 10;
+            foreach (Debt debt in db.debts)
+            {
+                if (debt != null)
+                {
+                    stacks[i+n].Visibility = Visibility.Visible;
+                    limitcheckArray[i + n].Visibility = Visibility.Hidden;
+                    nameArray[i + n].Content = debt.name;
+                    surnameArray[i + n].Content = debt.surname;
+                    gradeArray[i + n].Content = debt.grade;
+                    bookArray[i + n].Content = debt.book;
+                    takeArray[i + n].Content = debt.take_date;
+                    returnArray[i + n].Content = debt.return_date;
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
+                    {
+                        limitcheckArray[i + n].Visibility = Visibility.Visible;
+                        limitcheckArray[i + n].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (t1 < t2)
+                    {
+                        limitcheckArray[i + n].Visibility = Visibility.Visible;
+                        limitcheckArray[i + n].Foreground = Brushes.Red;
+                    }
+                    i++;//infolabel.Content += "\n";
+                }
+
+            }
+        }
+
+        public void previouspage(object sender, EventArgs e)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                stacks[j].Visibility = Visibility.Hidden;
+            }
+
+            db = new ApplicationContext();
+            int i = 0;
+            n -= 10;
+            foreach (Debt debt in db.debts)
+            {
+                if (debt != null)
+                {
+                    stacks[i + n].Visibility = Visibility.Visible;
+                    limitcheckArray[i + n].Visibility = Visibility.Hidden;
+                    nameArray[i + n].Content = debt.name;
+                    surnameArray[i + n].Content = debt.surname;
+                    gradeArray[i + n].Content = debt.grade;
+                    bookArray[i + n].Content = debt.book;
+                    takeArray[i + n].Content = debt.take_date;
+                    returnArray[i + n].Content = debt.return_date;
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
+                    {
+                        limitcheckArray[i + n].Visibility = Visibility.Visible;
+                        limitcheckArray[i + n].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (t1 < t2)
+                    {
+                        limitcheckArray[i + n].Visibility = Visibility.Visible;
+                        limitcheckArray[i + n].Foreground = Brushes.Red;
+                    }
+                    i++;//infolabel.Content += "\n";
+                }
+
+            }
         }
         public void close(object sender, EventArgs e)
         {

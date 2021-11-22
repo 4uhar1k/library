@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="List" Height="500" Width="1600" WindowStyle="None">
-    <ScrollViewer CanContentScroll="True">
+        Title="List" Height="500"  Width="1600" WindowStartupLocation="CenterScreen"  WindowStyle="None" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center">
+    <ScrollViewer CanContentScroll="True" VerticalAlignment="Center"  Width="1600" HorizontalAlignment="Stretch">
         
-        <StackPanel>
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Right" Width="1550" VerticalAlignment="Center">
             <Button Width="35" Height="35" Margin="1000,+10,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
             <Button Width="35" Height="35" Margin="900,-35,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
             <Button Width="100" Height="50" Margin="-1000,0,0,0" Click="mainMenu">Главное меню</Button>
             <TextBox Name="searchBar" Width="500" Height="50" Margin="350,-40,0,0"></TextBox>
             <Button Width="100" Height="50" Margin="1000,-50,0,0" FontSize="20" Click="search">Поиск</Button>
+            <Button Width="204" Height="50" Margin="-420,-50,0,0" FontSize="20" Click="nextpage">Следующая страница</Button>
+            <Button Width="204" Height="50" Margin="-1350,-50,0,0" FontSize="20" Click="previouspage">Предыдущая страница</Button>
+            <CheckBox Name="debters" Width="120"  Margin="-1000,0,0,0">Только должники</CheckBox>
+            <Button Name="debtersbut" Width="50" Height="20" Margin="-770,-17,0,0" Click="onlyDebt">OK</Button>
+
             <Label Width="150"  FontSize="20" Margin="-1400,20,0,0" FontFamily="Times New Roman">Имя</Label>
             <Label Width="150"  FontSize="20" Margin="-1070,-37,-35,-12" FontFamily="Times New Roman">Фамилия</Label>
             <Label Width="100"  FontSize="20" Margin="-680,-37,-35,-12" FontFamily="Times New Roman">Класс</Label>
@@ -131,7 +136,7 @@
                 <Button Name="delete10" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck10" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
             </StackPanel>
-        
+            
         </StackPanel>
     </ScrollViewer>
 </Window>
