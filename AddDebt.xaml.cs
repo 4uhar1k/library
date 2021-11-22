@@ -32,8 +32,8 @@ namespace library
             string surname = surnameText.Text.ToUpper();
             string books = bookText.Text.ToUpper();
             string grade = gradeText.Text.ToUpper();
-            string date1 = DateTime.Now.ToString("dd/MM/yyyy");
-            string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd/MM/yyyy");
+            string date1 = DateTime.Now.ToString("dd.MM.yyyy");
+            string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd.MM.yyyy");
 
             Debt auslander = null;
             using (ApplicationContext db = new ApplicationContext())
