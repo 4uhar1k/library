@@ -14,8 +14,8 @@
             <Button Width="100" Height="50" Margin="-1000,0,0,0" Click="mainMenu">Главное меню</Button>
             <TextBox Name="searchBar" Width="500" Height="50" Margin="350,-40,0,0"></TextBox>
             <Button Width="100" Height="50" Margin="1000,-50,0,0" FontSize="20" Click="search">Поиск</Button>
-            <Button Width="204" Height="50" Margin="-420,-50,0,0" FontSize="20" Click="search">Следующая страница</Button>
-            <Button Width="204" Height="50" Margin="-1350,-50,0,0" FontSize="20" Click="search">Предыдущая страница</Button>
+            <Button Width="204" Height="50" Margin="-420,-50,0,0" FontSize="20" Click="nextpage">Следующая страница</Button>
+            <Button Width="204" Height="50" Margin="-1350,-50,0,0" FontSize="20" Click="previouspage">Предыдущая страница</Button>
             <CheckBox Name="debters" Width="120"  Margin="-1000,0,0,0">Только должники</CheckBox>
             <Button Name="debtersbut" Width="50" Height="20" Margin="-770,-17,0,0" Click="onlyDebt">OK</Button>
 
