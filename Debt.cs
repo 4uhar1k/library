@@ -12,6 +12,8 @@ namespace library
         [Key]
         public int id { get; set; }
 
+
+        public int currentid { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
         public string grade { get; set; }
@@ -22,8 +24,9 @@ namespace library
 
         public Debt() { }
 
-        public Debt(string name, string surname, string book, string grade, string take_date, string return_date)
+        public Debt(int currentid, string name, string surname, string book, string grade, string take_date, string return_date)
         {
+            this.currentid = currentid;
             this.name = name;
             this.surname = surname;
             this.grade = grade;

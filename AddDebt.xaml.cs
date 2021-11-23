@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Z.EntityFramework.Extensions;
 
 namespace library
 {
@@ -34,24 +35,25 @@ namespace library
             string grade = gradeText.Text.ToUpper();
             string date1 = DateTime.Now.ToString("dd.MM.yyyy");
             string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd.MM.yyyy");
-
-            Debt auslander = null;
-            using (ApplicationContext db = new ApplicationContext())
+            int currentid = 1;
+            foreach (Debt debt1 in db.debts)
             {
-                auslander = db.debts.Where(b => b.book == books).FirstOrDefault();
+                currentid++;
             }
 
 
-            if (auslander == null)
-            {
-                Debt debt = new Debt(name, surname, books, grade, date1, date2);
+
+            // if (auslander == null)
+            //{
+            //MessageBox.Show(currentid.ToString());
+                Debt debt = new Debt(currentid, name, surname, books, grade, date1, date2);
                 db.debts.Add(debt);
                 db.SaveChanges();
                 MessageBox.Show("Запись успешно сохранена.");
                 this.Hide();
                 MainWindow maw = new MainWindow();
                 maw.Show();
-            }
+            //}
         }
 
         public void close(object sender, EventArgs e)

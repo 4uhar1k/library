@@ -39,6 +39,8 @@ namespace library
             {
                 stacks[j].Visibility = Visibility.Hidden;
             }
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
             nameArray = new Label[10] { Name1, Name2, Name3, Name4, Name5, Name6, Name7, Name8, Name9, Name10 };
             surnameArray = new Label[10] { Surname1, Surname2, Surname3, Surname4, Surname5, Surname6, Surname7, Surname8, Surname9, Surname10 };
             gradeArray = new Label[10] {Grade1, Grade2, Grade3, Grade4, Grade5, Grade6, Grade7, Grade8, Grade9, Grade10 };
@@ -49,10 +51,11 @@ namespace library
             deleteArray = new Button[10] { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10};
             limitcheckArray = new Label[10] { limitcheck1, limitcheck2, limitcheck3, limitcheck4, limitcheck5, limitcheck6, limitcheck7, limitcheck8, limitcheck9, limitcheck10};
             db = new ApplicationContext();
-            int i = 0;
+            int i = 0, maxId = 0;
+
             foreach (Debt debt in db.debts)
             {
-                if (debt!=null)
+                if (debt!=null && i<=9)
                 {
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
@@ -75,9 +78,14 @@ namespace library
                         limitcheckArray[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Foreground = Brushes.Red;
                     }
-                    i++;//infolabel.Content += "\n";
+                    i++;
+                    
                 }
-                
+                maxId++;
+            }
+            if (maxId>n+10)
+            {
+                next.Visibility = Visibility.Visible;
             }
         }
 
@@ -121,12 +129,23 @@ namespace library
                     {
                         user = db.debts.Where(b => b.name == name.Content.ToString() && b.surname == surname.Content.ToString() && b.grade == grade.Content.ToString() && b.book == book.Content.ToString() && b.take_date == take.Content.ToString() && b.return_date == ret.Content.ToString()).FirstOrDefault();
                         db.debts.Remove(user);
-                        db.SaveChanges();
-                        this.Hide();
-                        MessageBox.Show("Пользователь был успешно удален.");
-                        List li = new List();
-                        li.Show();
+                        db.SaveChanges(); 
                     }
+                    int curid = 1;
+                    foreach (Debt debt in db.debts)
+                    {
+                        
+                            
+                            debt.currentid = curid;
+                            db.SaveChanges();
+
+                        
+                        curid++;
+                    }
+                    this.Hide();
+                    MessageBox.Show("Пользователь был успешно удален.");
+                    List li = new List();
+                    li.Show();
                     break;
             }
 
@@ -207,8 +226,9 @@ namespace library
 
         public void onlyDebt(object sender, EventArgs e)
         {
-            int i = 0;
-            
+            int i = 0, maxId = 0;
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
             if (debters.IsChecked == true)
             {
                 for (int j = 0; j < 10; j++)
@@ -217,44 +237,62 @@ namespace library
                 }
                 foreach (Debt debt in db.debts)
                 {
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (debt != null)
                     {
+
                         
-                        DateTime t1 = Convert.ToDateTime(debt.return_date);
-                        DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                         if (t1 == t2 || t1 < t2)
                         {
+                            maxId++;
+                            if (i<=9)
+                            {
+                                stacks[i].Visibility = Visibility.Visible;
+                                limitcheckArray[i].Visibility = Visibility.Hidden;
+                                nameArray[i].Content = debt.name;
+                                surnameArray[i].Content = debt.surname;
+                                gradeArray[i].Content = debt.grade;
+                                bookArray[i].Content = debt.book;
+                                takeArray[i].Content = debt.take_date;
+                                returnArray[i].Content = debt.return_date;
+                                limitcheckArray[i].Visibility = Visibility.Visible;
+                                if (t1 == t2)
+                                    limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                                if (t1 < t2)
+                                    limitcheckArray[i].Foreground = Brushes.Red;
+                                i++;
+                            }
                             
-                            stacks[i].Visibility = Visibility.Visible;
-                            limitcheckArray[i].Visibility = Visibility.Hidden;
-                            nameArray[i].Content = debt.name;
-                            surnameArray[i].Content = debt.surname;
-                            gradeArray[i].Content = debt.grade;
-                            bookArray[i].Content = debt.book;
-                            takeArray[i].Content = debt.take_date;
-                            returnArray[i].Content = debt.return_date;
-                            limitcheckArray[i].Visibility = Visibility.Visible;
-                            if (t1==t2)
-                                limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                            if (t1<t2)
-                                limitcheckArray[i].Foreground = Brushes.Red;
-                            i++;
-
+                            
+                            
                         }
 
 
 
                         //infolabel.Content += "\n";
                     }
+                    
 
                 }
-                
+
+                if (maxId > n + 10)
+                {
+                    next.Visibility = Visibility.Visible;
+                }
+                if (maxId - 10 < n && maxId-10>0)
+                {
+                    prev.Visibility = Visibility.Visible;
+                }
+
             }
             else
             {
+                maxId = 0;
                 foreach (Debt debt in db.debts)
                 {
-                    if (debt != null)
+                    maxId++;
+                    if (debt != null && i <= 9)
                     {
                         
                         stacks[i].Visibility = Visibility.Visible;
@@ -281,6 +319,14 @@ namespace library
                     }
 
                 }
+                if (maxId > n + 10)
+                {
+                    next.Visibility = Visibility.Visible;
+                }
+                if (maxId - 10 < n && maxId - 10 > 0)
+                {
+                    prev.Visibility = Visibility.Visible;
+                }
             }
 
         }
@@ -291,37 +337,49 @@ namespace library
             {
                 stacks[j].Visibility = Visibility.Hidden;
             }
-            
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
             db = new ApplicationContext();
             int i = 0;
             n += 10;
+            int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null)
+                if (debt != null && debt.currentid>n && debt.currentid<=n+10)
                 {
-                    stacks[i+n].Visibility = Visibility.Visible;
-                    limitcheckArray[i + n].Visibility = Visibility.Hidden;
-                    nameArray[i + n].Content = debt.name;
-                    surnameArray[i + n].Content = debt.surname;
-                    gradeArray[i + n].Content = debt.grade;
-                    bookArray[i + n].Content = debt.book;
-                    takeArray[i + n].Content = debt.take_date;
-                    returnArray[i + n].Content = debt.return_date;
+                    stacks[i].Visibility = Visibility.Visible;
+                    limitcheckArray[i].Visibility = Visibility.Hidden;
+                    nameArray[i].Content = debt.name;
+                    surnameArray[i].Content = debt.surname;
+                    gradeArray[i].Content = debt.grade;
+                    bookArray[i].Content = debt.book;
+                    takeArray[i].Content = debt.take_date;
+                    returnArray[i].Content = debt.return_date;
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1 == t2)
                     {
-                        limitcheckArray[i + n].Visibility = Visibility.Visible;
-                        limitcheckArray[i + n].Foreground = Brushes.DarkOrange;
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
                     }
                     else if (t1 < t2)
                     {
-                        limitcheckArray[i + n].Visibility = Visibility.Visible;
-                        limitcheckArray[i + n].Foreground = Brushes.Red;
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
                     }
-                    i++;//infolabel.Content += "\n";
+                    i++;
+                    
                 }
+                maxId++;
 
+            }
+            if (maxId > n + 10)
+            {
+                next.Visibility = Visibility.Visible;
+            }
+            if (maxId - 10 < n && maxId - 10 > 0)
+            {
+                prev.Visibility = Visibility.Visible;
             }
         }
 
@@ -331,37 +389,49 @@ namespace library
             {
                 stacks[j].Visibility = Visibility.Hidden;
             }
-
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
             db = new ApplicationContext();
             int i = 0;
             n -= 10;
+            int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null)
+                if (debt != null && debt.currentid > n && debt.currentid <= n + 10)
                 {
-                    stacks[i + n].Visibility = Visibility.Visible;
-                    limitcheckArray[i + n].Visibility = Visibility.Hidden;
-                    nameArray[i + n].Content = debt.name;
-                    surnameArray[i + n].Content = debt.surname;
-                    gradeArray[i + n].Content = debt.grade;
-                    bookArray[i + n].Content = debt.book;
-                    takeArray[i + n].Content = debt.take_date;
-                    returnArray[i + n].Content = debt.return_date;
+                    stacks[i].Visibility = Visibility.Visible;
+                    limitcheckArray[i].Visibility = Visibility.Hidden;
+                    nameArray[i].Content = debt.name;
+                    surnameArray[i].Content = debt.surname;
+                    gradeArray[i].Content = debt.grade;
+                    bookArray[i].Content = debt.book;
+                    takeArray[i].Content = debt.take_date;
+                    returnArray[i].Content = debt.return_date;
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1 == t2)
                     {
-                        limitcheckArray[i + n].Visibility = Visibility.Visible;
-                        limitcheckArray[i + n].Foreground = Brushes.DarkOrange;
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
                     }
                     else if (t1 < t2)
                     {
-                        limitcheckArray[i + n].Visibility = Visibility.Visible;
-                        limitcheckArray[i + n].Foreground = Brushes.Red;
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
                     }
                     i++;//infolabel.Content += "\n";
+                    
                 }
+                maxId++;
 
+            }
+            if (maxId > n + 10)
+            {
+                next.Visibility = Visibility.Visible;
+            }
+            if (maxId - 10 < n && maxId - 10 > 0)
+            {
+                prev.Visibility = Visibility.Visible;
             }
         }
         public void close(object sender, EventArgs e)
