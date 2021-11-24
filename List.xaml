@@ -24,6 +24,7 @@
             <Label Width="300"  FontSize="20" Margin="-300,-37,-35,-12" FontFamily="Times New Roman">Книга</Label>
             <Label Width="184"  FontSize="20" Margin="200,-37,-35,-12" FontFamily="Times New Roman">Дата получения</Label>
             <Label Width="120"  FontSize="20" Margin="570,-37,-35,-12" FontFamily="Times New Roman">Доступна до</Label>
+            <Label Width="120"  FontSize="20" Margin="1400,-37,-35,-12" FontFamily="Times New Roman">Номер</Label>
             <StackPanel Name ="panel1" Height="50" Margin="0,50,0,0">
             
                 <Label Width="150" Name="Name1" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -32,6 +33,7 @@
                 <Label Width="300" Name="Book1" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate1" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate1" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num1" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit1" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete1" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck1" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -42,7 +44,8 @@
                 <Label Width="100" Name="Grade2" FontSize="20" Margin="-680,-37,-35,-12">aaa</Label>
                 <Label Width="300" Name="Book2" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate2" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="RetutrnDate2" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="RetutrnDate2" FontSize="20" Margin="570,-37,-35,-12">aaa</Label> 
+                <Label Width="120" Name="Num2" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit2" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete2" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck2" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -54,6 +57,7 @@
                 <Label Width="300" Name="Book3" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate3" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate3" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num3" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit3" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete3" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck3" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -65,6 +69,7 @@
                 <Label Width="300" Name="Book4" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate4" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate4" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num4" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit4" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete4" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck4" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -76,6 +81,7 @@
                 <Label Width="300" Name="Book5" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate5" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate5" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num5" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit5" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete5" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck5" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -87,6 +93,7 @@
                 <Label Width="300" Name="Book6" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate6" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate6" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num6" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit6" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete6" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck6" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -98,6 +105,7 @@
                 <Label Width="300" Name="Book7" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate7" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate7" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num7" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit7" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete7" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck7" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -109,6 +117,7 @@
                 <Label Width="300" Name="Book8" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate8" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate8" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num8" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit8" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete8" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck8" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -120,6 +129,7 @@
                 <Label Width="300" Name="Book9" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate9" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate9" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num9" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit9" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete9" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck9" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
@@ -131,6 +141,7 @@
                 <Label Width="300" Name="Book10" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate10" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate10" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num10" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
                 <Button Name="limit10" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
                 <Button Name="delete10" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
                 <Label Name="limitcheck10" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
