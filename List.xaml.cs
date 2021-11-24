@@ -30,6 +30,7 @@ namespace library
         Button[] limitArray;
         Button[] deleteArray;
         Label[] limitcheckArray;
+        Label[] numArray;
         int n = 0;
         public List()
         {
@@ -50,6 +51,8 @@ namespace library
             limitArray = new Button[10] { limit1, limit2, limit3, limit4, limit5, limit6, limit7, limit8, limit9, limit10 };
             deleteArray = new Button[10] { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10};
             limitcheckArray = new Label[10] { limitcheck1, limitcheck2, limitcheck3, limitcheck4, limitcheck5, limitcheck6, limitcheck7, limitcheck8, limitcheck9, limitcheck10};
+            numArray = new Label[10] { Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9, Num10 };
+
             db = new ApplicationContext();
             int i = 0, maxId = 0;
 
@@ -65,6 +68,7 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+                    numArray[i].Content = debt.currentid;
                     debt.debtstate = 0;
                     db.SaveChanges();
              
