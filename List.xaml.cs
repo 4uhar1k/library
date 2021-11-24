@@ -37,7 +37,7 @@ namespace library
             InitializeComponent();
             stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10};
             for (int j = 0;j<10;j++)
-            {
+            {                                                                                                                                                                                                                                                                   
                 stacks[j].Visibility = Visibility.Hidden;
             }
             next.Visibility = Visibility.Hidden;

@@ -1,0 +1,28 @@
+﻿<Window x:Class="library.addBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:library"
+        mc:Ignorable="d"
+        Title="addBook" Height="450" Width="800">
+    <Grid>
+        <Button Width="100" Height="30" Margin="370,-400,0,0" Click="mainMenu">Главное меню</Button>
+        <Button Width="35" Height="35" Margin="700,-400,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
+        <Button Width="35" Height="35" Margin="600,-400,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
+        <Label Width="400" Height="40" Margin="-220,-370,0,0" FontSize="25">Название книги</Label>
+        <TextBox Name="bookNameTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-280,0,0"></TextBox>
+        <Label  Width="400" Height="40" Margin="-220,-170,0,0" FontSize="25">Издатель</Label>
+        <TextBox Name="isdatelBookTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-80,0,0"></TextBox>
+        <Label Width="400" Height="40" Margin="-220,30,0,0" FontSize="25">Код книги</Label>
+        <TextBox Name="bookCodeTextBox" Width="500" FontSize="25" Height="40" Margin="-120,120,0,0"></TextBox>
+
+
+        <Label Width="400" Height="40" Margin="-220,220,0,0" FontSize="25">Автор</Label>
+        <TextBox Name="bookAuthorTextBox" Width="500" FontSize="25" Height="40" Margin="-120,300,0,0"></TextBox>
+
+
+        <Button Width="150" Height="50" Margin="625,332,25,32" Content="Готово" FontSize="25" Click="addInfo"></Button>
+
+    </Grid>
+</Window>

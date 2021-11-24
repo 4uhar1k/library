@@ -81,9 +81,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="addBook.xaml.cs">
+      <DependentUpon>addBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="updLimit.xaml.cs">
       <DependentUpon>updLimit.xaml</DependentUpon>
     </Compile>
+    <Page Include="addBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddDebt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
