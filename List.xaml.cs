@@ -65,16 +65,22 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+                    debt.debtstate = 0;
+                    db.SaveChanges();
              
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1==t2)
                     {
+                        debt.debtstate = 1;
+                        db.SaveChanges();
                         limitcheckArray[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Foreground = Brushes.DarkOrange;
                     }
                     else if (t1<t2)
                     {
+                        debt.debtstate = 2;
+                        db.SaveChanges();
                         limitcheckArray[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Foreground = Brushes.Red;
                     }
@@ -173,18 +179,18 @@ namespace library
                 {
                     stacks[j].Visibility = Visibility.Hidden;
                 }
-
+                
                 foreach (Debt debt in db.debts)
                 {
-                    //MessageBox.Show(searchBar.Text);
+                //MessageBox.Show(searchBar.Text);
 
-                    //MessageBox.Show($"{debt.name} , {debt.surname}, {debt.grade}, {debt.book}");
+                //MessageBox.Show($"{debt.name} , {debt.surname}, {debt.grade}, {debt.book}");
 
-                    //this.Hide();
-                    //List li = new List();
-                    // li.Show();
-                    //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
-                    if (debt.surname.StartsWith(searchBar.Text.ToUpper()))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
+                //this.Hide();
+                //List li = new List();
+                // li.Show();
+                //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
+                if (debt.surname.StartsWith(searchBar.Text.ToUpper()) && ((debters.IsChecked==true) ? (debt.debtstate>0):(debt.debtstate>-1)))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                     {
                         stacks[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Visibility = Visibility.Hidden;
@@ -194,29 +200,31 @@ namespace library
                         bookArray[i].Content = debt.book;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
-                    Debt userTest = null;
-                    using (ApplicationContext db = new ApplicationContext())
-                    {
-                        userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
+                        Debt userTest = null;
+                        using (ApplicationContext db = new ApplicationContext())
+                        {
+                            userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
+                        }
+                        //MessageBox.Show(userTest.name);
+                        
+                        if (debt.debtstate == 1)
+                        {
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                        }
+                        else if (debt.debtstate == 2)
+                        {
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Foreground = Brushes.Red;
+                        }
+                        i++;
                     }
-                    //MessageBox.Show(userTest.name);
-                    DateTime t1 = Convert.ToDateTime(userTest.return_date);
-                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
-                    if (t1 == t2)
-                    {
-                        limitcheckArray[i].Visibility = Visibility.Visible;
-                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                    }
-                    else if (t1 < t2)
-                    {
-                        limitcheckArray[i].Visibility = Visibility.Visible;
-                        limitcheckArray[i].Foreground = Brushes.Red;
-                    }
-                    i++;
-                    }
-                    
-                    
+
+
                 }
+            
+       
+                
 
 
 

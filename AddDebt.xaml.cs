@@ -46,7 +46,7 @@ namespace library
             // if (auslander == null)
             //{
             //MessageBox.Show(currentid.ToString());
-                Debt debt = new Debt(currentid, name, surname, books, grade, date1, date2);
+                Debt debt = new Debt(currentid, name, surname, books, grade, date1, date2, 0);
                 db.debts.Add(debt);
                 db.SaveChanges();
                 MessageBox.Show("Запись успешно сохранена.");

@@ -20,11 +20,12 @@ namespace library
         public string book { get; set; }
         public string take_date { get; set; }
         public string return_date { get; set; }
+        public int debtstate { get;set; }
 
 
         public Debt() { }
 
-        public Debt(int currentid, string name, string surname, string book, string grade, string take_date, string return_date)
+        public Debt(int currentid, string name, string surname, string book, string grade, string take_date, string return_date, int debtstate)
         {
             this.currentid = currentid;
             this.name = name;
@@ -33,6 +34,7 @@ namespace library
             this.book = book;
             this.take_date = take_date;
             this.return_date = return_date;
+            this.debtstate = debtstate;
         }
 
     }
