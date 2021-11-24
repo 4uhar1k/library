@@ -58,7 +58,7 @@ namespace library
 
             foreach (Debt debt in db.debts)
             {
-                if (debt!=null && i<=9)
+                if (debt!=null && i<=9 &&   ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)))
                 {
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
@@ -204,7 +204,9 @@ namespace library
                         bookArray[i].Content = debt.book;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
-                        Debt userTest = null;
+                    numArray[i].Content = debt.currentid;
+
+                    Debt userTest = null;
                         using (ApplicationContext db = new ApplicationContext())
                         {
                             userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
@@ -255,7 +257,7 @@ namespace library
                     {
 
                         
-                        if (t1 == t2 || t1 < t2)
+                        if (debt.debtstate>0 && debt.surname.StartsWith(searchBar.Text))
                         {
                             maxId++;
                             if (i<=9)
@@ -268,10 +270,11 @@ namespace library
                                 bookArray[i].Content = debt.book;
                                 takeArray[i].Content = debt.take_date;
                                 returnArray[i].Content = debt.return_date;
+                                numArray[i].Content = debt.currentid;
                                 limitcheckArray[i].Visibility = Visibility.Visible;
-                                if (t1 == t2)
+                                if (debt.debtstate==1)
                                     limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                                if (t1 < t2)
+                                if (debt.debtstate==2)
                                     limitcheckArray[i].Foreground = Brushes.Red;
                                 i++;
                             }
@@ -304,7 +307,7 @@ namespace library
                 foreach (Debt debt in db.debts)
                 {
                     maxId++;
-                    if (debt != null && i <= 9)
+                    if (debt != null && i <= 9 && debt.surname.StartsWith(searchBar.Text))
                     {
                         
                         stacks[i].Visibility = Visibility.Visible;
@@ -315,14 +318,14 @@ namespace library
                         bookArray[i].Content = debt.book;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
-                        DateTime t1 = Convert.ToDateTime(debt.return_date);
-                        DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
-                        if (t1 == t2)
+                        numArray[i].Content = debt.currentid;
+
+                        if (debt.debtstate==1)
                         {
                             limitcheckArray[i].Visibility = Visibility.Visible;
                             limitcheckArray[i].Foreground = Brushes.DarkOrange;
                         }
-                        else if (t1 < t2)
+                        else if (debt.debtstate==2)
                         {
                             limitcheckArray[i].Visibility = Visibility.Visible;
                             limitcheckArray[i].Foreground = Brushes.Red;
@@ -367,6 +370,8 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+                    numArray[i].Content = debt.currentid;
+
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1 == t2)
@@ -419,6 +424,8 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
+                    numArray[i].Content = debt.currentid;
+
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1 == t2)
