@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace library
         [Key]
         public int id { get; set; }
 
-
+        public int debtstate { get; set; }
         public int currentid { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
@@ -24,7 +25,7 @@ namespace library
 
         public Debt() { }
 
-        public Debt(int currentid, string name, string surname, string book, string grade, string take_date, string return_date)
+        public Debt(int currentid, string name, string surname, string book, string grade, string take_date, string return_date, int debtstate)
         {
             this.currentid = currentid;
             this.name = name;
@@ -33,6 +34,8 @@ namespace library
             this.book = book;
             this.take_date = take_date;
             this.return_date = return_date;
+            this.debtstate = debtstate;
+            
         }
 
     }

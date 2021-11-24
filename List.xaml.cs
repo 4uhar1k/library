@@ -30,6 +30,7 @@ namespace library
         Button[] limitArray;
         Button[] deleteArray;
         Label[] limitcheckArray;
+        Label[] numArray;
         int n = 0;
         public List()
         {
@@ -41,6 +42,7 @@ namespace library
             }
             next.Visibility = Visibility.Hidden;
             prev.Visibility = Visibility.Hidden;
+            numArray = new Label[10] { Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9, Num10 };
             nameArray = new Label[10] { Name1, Name2, Name3, Name4, Name5, Name6, Name7, Name8, Name9, Name10 };
             surnameArray = new Label[10] { Surname1, Surname2, Surname3, Surname4, Surname5, Surname6, Surname7, Surname8, Surname9, Surname10 };
             gradeArray = new Label[10] {Grade1, Grade2, Grade3, Grade4, Grade5, Grade6, Grade7, Grade8, Grade9, Grade10 };
@@ -65,7 +67,7 @@ namespace library
                     bookArray[i].Content = debt.book;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
-             
+                    numArray[i].Content = debt.currentid;           
                     DateTime t1 = Convert.ToDateTime(debt.return_date);
                     DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
                     if (t1==t2)
@@ -117,7 +119,7 @@ namespace library
             Label take = takeArray[Array.IndexOf(deleteArray, btn)];
             Label ret = returnArray[Array.IndexOf(deleteArray, btn)];
             //MessageBox
-            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите вычеркнуть ученика из списка?", "", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить ученика из списка?", "", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.No:
