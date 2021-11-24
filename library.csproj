@@ -84,6 +84,7 @@
     <Compile Include="addBook.xaml.cs">
       <DependentUpon>addBook.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Book.cs" />
     <Compile Include="updLimit.xaml.cs">
       <DependentUpon>updLimit.xaml</DependentUpon>
     </Compile>

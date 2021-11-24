@@ -11,6 +11,8 @@ namespace library
     {
         public DbSet<Debt> debts { get; set; }
 
+        public DbSet<Book> books { get; set; }
+
         public ApplicationContext() : base("DefaultConnection") { }
 
 

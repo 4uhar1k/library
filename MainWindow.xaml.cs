@@ -51,6 +51,11 @@ namespace library
             WindowState = WindowState.Minimized;
         }
 
-       
+       public void addBook(object sender, EventArgs e)
+        {
+            this.Hide();
+            addBook ad = new addBook();
+            ad.Show();
+        }
     }
 }
