@@ -13,7 +13,8 @@
         <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="-450,-150,0,0" FontSize="20" Click="addUser" Content="Добавить читателя" Background="#FF737373"></Button>
         <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="0,-150,0,0" FontSize="20" Click="addBook" Content="Добавить книгу" Background="#FF787878"></Button>
         <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="450,-150,0,0" FontSize="20" Content="Создать отчет" Background="#FF757575"></Button>
-        <Button Width="500" Height="100" FontFamily="Comic Sans MS" Margin="150,200,150,50" FontSize="70" Click="showList" Background="#FF797979">Список</Button>
+        <Button Width="500" Height="70" FontFamily="Comic Sans MS" Margin="150,150,150,50" FontSize="47" Click="showList" Background="#FF797979">Список читателей</Button>
+        <Button Width="500" Height="70" FontFamily="Comic Sans MS" Margin="150,330,150,50" FontSize="47" Click="showBookList" Background="#FF797979">Список книг</Button>
         
          
     </Grid>

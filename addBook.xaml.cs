@@ -28,19 +28,24 @@ namespace library
         public void addBookClick(object sender, EventArgs e)
         {
             db = new ApplicationContext();
-            string name = bookNameTextBox.Text;
+            string name = bookNameTextBox.Text.ToUpper();
             string publisher = isdatelBookTextBox.Text;
-            int code = Convert.ToInt32(bookCodeTextBox.Text);
+            long code = Convert.ToInt64(bookCodeTextBox.Text);
             string author = bookAuthorTextBox.Text;
             int amount = Convert.ToInt32(amountText.Text);
             
             Book book = null;
+            int currentid = 1;
+            foreach (Book book1 in db.books)
+            {
+                currentid++;
+            }
             using (ApplicationContext db = new ApplicationContext())
             {
                 book = db.books.Where(b=>b.code == code).FirstOrDefault();
                 if (book == null)
                 {
-                    Book book1 = new Book(name, publisher, code, author, amount);
+                    Book book1 = new Book(name, publisher, code, author, amount, currentid);
                     db.books.Add(book1);
                     db.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена в базу");

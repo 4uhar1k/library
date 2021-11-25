@@ -173,13 +173,14 @@ namespace library
         {
             //Debt user;
             string s = searchBar.Text.ToUpper();
-            
+
             //s = s.ToUpper();
-            int i = 0;
+            int i = 0, maxId = 0;
             //MessageBox.Show("ШИПАЧЕВ".Contains("ЕГОР").ToString());
-            
-                //MessageBox.Show($"{user.surname.Contains(searchBar.Text.ToLower())}");
-                for (int j = 0; j < 10; j++)
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
+            //MessageBox.Show($"{user.surname.Contains(searchBar.Text.ToLower())}");
+            for (int j = 0; j < 10; j++)
                 {
                     stacks[j].Visibility = Visibility.Hidden;
                 }
@@ -196,6 +197,9 @@ namespace library
                 //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
                 if (debt.surname.StartsWith(searchBar.Text.ToUpper()) && ((debters.IsChecked==true) ? (debt.debtstate>0):(debt.debtstate>-1)))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                     {
+                    maxId++;
+                    if (i<=9)
+                    {
                         stacks[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Visibility = Visibility.Hidden;
                         nameArray[i].Content = debt.name;
@@ -204,15 +208,16 @@ namespace library
                         bookArray[i].Content = debt.book;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
-                    numArray[i].Content = debt.currentid;
+                        numArray[i].Content = debt.currentid;
 
-                    Debt userTest = null;
+
+                        Debt userTest = null;
                         using (ApplicationContext db = new ApplicationContext())
                         {
                             userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
                         }
                         //MessageBox.Show(userTest.name);
-                        
+
                         if (debt.debtstate == 1)
                         {
                             limitcheckArray[i].Visibility = Visibility.Visible;
@@ -225,16 +230,25 @@ namespace library
                         }
                         i++;
                     }
+                        
+                    }
 
 
                 }
-            
-       
-                
+
+            if (maxId > n + 10)
+            {
+                next.Visibility = Visibility.Visible;
+            }
+            if (maxId - 10 < n && maxId - 10 > 0)
+            {
+                prev.Visibility = Visibility.Visible;
+            }
 
 
 
-            
+
+
 
         }
 
@@ -257,7 +271,7 @@ namespace library
                     {
 
                         
-                        if (debt.debtstate>0 && debt.surname.StartsWith(searchBar.Text))
+                        if (debt.debtstate>0 && debt.surname.StartsWith(searchBar.Text.ToUpper()))
                         {
                             maxId++;
                             if (i<=9)
@@ -307,7 +321,7 @@ namespace library
                 foreach (Debt debt in db.debts)
                 {
                     maxId++;
-                    if (debt != null && i <= 9 && debt.surname.StartsWith(searchBar.Text))
+                    if (debt != null && i <= 9 && debt.surname.StartsWith(searchBar.Text.ToUpper()))
                     {
                         
                         stacks[i].Visibility = Visibility.Visible;
@@ -360,7 +374,7 @@ namespace library
             int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null && debt.currentid>n && debt.currentid<=n+10)
+                if (debt != null && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.surname.StartsWith(searchBar.Text.ToUpper()) && debt.currentid>n && debt.currentid<=n+10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
@@ -414,7 +428,7 @@ namespace library
             int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null && debt.currentid > n && debt.currentid <= n + 10)
+                if (debt != null && debt.currentid > n && debt.surname.StartsWith(searchBar.Text.ToUpper()) && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.currentid <= n + 10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;

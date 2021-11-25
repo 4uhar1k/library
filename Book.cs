@@ -12,11 +12,13 @@ namespace library
         [Key]
         public int id { get; set; }
 
+
         public string name { get; set; }
         public string publisher { get; set; }
-        public int code { get; set; }
+        public long code { get; set; }
         public string author { get; set; }
         public int amount { get; set; }
+        public int currentid { get; set; }
         
 
         public Book()
@@ -24,13 +26,14 @@ namespace library
 
         }
 
-        public Book(string name, string publisher, int code, string author, int amount)
+        public Book(string name, string publisher, long code, string author, int amount, int currentid)
         {
             this.name = name;
             this.publisher = publisher;
             this.code = code;
             this.author = author;
             this.amount = amount;
+            this.currentid = currentid;
         }
     }
 }

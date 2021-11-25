@@ -41,6 +41,13 @@ namespace library
             adi.Show();
         }
 
+        public void showBookList(object sender, EventArgs e)
+        {
+            this.Hide();
+            BookList adi = new BookList();
+            adi.Show();
+        }
+
         public void close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();

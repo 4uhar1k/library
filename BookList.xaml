@@ -1,0 +1,120 @@
+﻿<Window x:Class="library.BookList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:library"
+        mc:Ignorable="d"
+        Title="List" Height="500"  Width="1600" WindowStartupLocation="CenterScreen"  WindowStyle="None" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center">
+    <ScrollViewer CanContentScroll="True" VerticalAlignment="Center"  Width="1600" HorizontalAlignment="Stretch">
+
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Right" Width="1550" VerticalAlignment="Center">
+            <Button Width="35" Height="35" Margin="1000,+10,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
+            <Button Width="35" Height="35" Margin="900,-35,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
+            <Button Width="100" Height="50" Margin="-880,0,0,0" Click="mainMenu">Главное меню</Button>
+            <TextBox Name="searchBar" Width="500" Height="50" TextChanged="search" Margin="350,-40,0,0"></TextBox>
+
+            <Button Name="next" Width="204" Height="50" Margin="-420,-70,0,0" FontSize="20" Click="nextpage">Вперед</Button>
+            <Button Name="prev" Width="204" Height="50" Margin="-1350,-70,0,0" FontSize="20" Click="previouspage">Назад</Button>
+
+            <Label Width="150"  FontSize="20" Margin="-1400,20,0,0" FontFamily="Times New Roman">Название</Label>
+            <Label Width="150"  FontSize="20" Margin="-930,-37,-35,-12" FontFamily="Times New Roman">Автор</Label>
+            <Label Width="100"  FontSize="20" Margin="-580,-37,-35,-12" FontFamily="Times New Roman">Код</Label>
+            <Label Width="300"  FontSize="20" Margin="80,-37,-35,-12" FontFamily="Times New Roman">Издатель</Label>
+            <Label Width="92"  FontSize="20" Margin="580,-37,-35,-12" FontFamily="Times New Roman">Доступно</Label>
+            <Label Width="120"  FontSize="20" Margin="930,-37,-35,-12" FontFamily="Times New Roman">У читателей</Label>
+            <StackPanel Name ="panel1" Height="50" Margin="0,50,0,0">
+
+                <Label Width="250" Name="Name1" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author1" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code1" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub1" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail1" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail1" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose1" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel2" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name2" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author2" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code2" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub2" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail2" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail2" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose2" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel3" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name3" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author3" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code3" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub3" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail3" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail3" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose3" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel4" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name4" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author4" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code4" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub4" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail4" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail4" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose4" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel5" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name5" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author5" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code5" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub5" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail5" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail5" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose5" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel6" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name6" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author6" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code6" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub6" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail6" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail6" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose6" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel7" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name7" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author7" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code7" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub7" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail7" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail7" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose7" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel8" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name8" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author8" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code8" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub8" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail8" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail8" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose8" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel9" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name9" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author9" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code9" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub9" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail9" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail9" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose9" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+            <StackPanel Name ="panel10" Height="50" Margin="0,0,0,0">
+                <Label Width="250" Name="Name10" FontSize="20" Margin="-1290,0,0,0">aaa</Label>
+                <Label Width="200" Name="Author10" FontSize="20" Margin="-870,-37,-35,-12">aaa</Label>
+                <Label Width="230" Name="Code10" FontSize="20" Margin="-430,-37,-35,-12">aaa</Label>
+                <Label Width="300" Name="Pub10" FontSize="20" Margin="100,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Avail10" FontSize="20" Margin="650,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="NAvail10" FontSize="20" Margin="970,-37,-35,-12">aaa</Label>
+                <Button Name="choose10" Width="100" Height="30" Margin="1270,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
