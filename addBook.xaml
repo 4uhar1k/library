@@ -7,23 +7,23 @@
         mc:Ignorable="d"
         Title="addBook" Height="750" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFC5D0E6">
-        <Button Width="100" Height="30" Margin="370,-700,0,0" Click="mainMenu" >Главное меню</Button>
+        <Button Width="100" Height="30" FontFamily="Century Gothic" Margin="370,-700,0,0" Click="mainMenu" >Главное меню</Button>
         <Button Width="35" Height="35" Margin="700,-700,0,0" Click="close" FontSize="20" Foreground="Red" >X</Button>
         <Button Width="35" Height="35" Margin="600,-700,0,0" Click="min" FontSize="20" Foreground="Blue" >-</Button>
-        <Label Width="400" Height="40" Margin="-220,-670,0,0" FontSize="25">Название книги</Label>
+        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-670,0,0" FontSize="25">Название книги</Label>
         <TextBox Name="bookNameTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-580,0,0"></TextBox>
-        <Label  Width="400" Height="40" Margin="-220,-430,0,0" FontSize="25">Издатель</Label>
+        <Label  Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-430,0,0" FontSize="25">Издатель</Label>
         <TextBox Name="isdatelBookTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-340,0,0"></TextBox>
-        <Label Width="400" Height="40" Margin="-220,-190,0,0" FontSize="25">Код книги</Label>
+        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-190,0,0" FontSize="25">Код книги</Label>
         <TextBox Name="bookCodeTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-100,0,0"></TextBox>
 
 
-        <Label Width="400" Height="40" Margin="-220,50,0,0" FontSize="25">Автор</Label>
+        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,50,0,0" FontSize="25">Автор</Label>
         <TextBox Name="bookAuthorTextBox" Width="500" FontSize="25" Height="40" Margin="-120,140,0,0"></TextBox>
 
-        <Label Width="400" Height="40" Margin="-220,290,0,0" FontSize="25">Кол-во книг</Label>
+        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,290,0,0" FontSize="25">Кол-во книг</Label>
         <TextBox Name="amountText" Width="500" FontSize="25" Height="40" Margin="-120,380,0,0"></TextBox>
-        <Button Width="150" Height="50" Margin="0,632,25,32" Content="Готово" Click="addBookClick" FontSize="25" ></Button>
+        <Button Width="150" Height="50" FontFamily="Century Gothic" Margin="0,632,25,32" Content="Готово" Click="addBookClick" FontSize="25" ></Button>
 
     </Grid>
 </Window>
