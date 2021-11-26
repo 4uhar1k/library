@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="AddDebt" Height="470" Width="800" WindowStartupLocation="CenterScreen" Background="#FFC5D0E6" WindowStyle="None">
     <Grid Background="#FFC5D0E6">
-        <Button Width="35" Height="35" Margin="700,-400,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
-        <Button Width="35" Height="35" Margin="600,-400,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
+        <Button Width="35" Height="40" Margin="700,-400,0,0" FontSize="30" Foreground="#FF565656" Click="close" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6">X</Button>
+        <Button Width="35" Height="40" Margin="600,-400,0,0" FontSize="30" Foreground="#FF565656" Click="min" BorderBrush="#FFC5D0E6" Background="#FFC5D0E6">-</Button>
         <Button Width="100" Height="30" FontFamily="Century Gothic" Margin="370,-400,0,0" Click="mainMenu">Главное меню</Button>
         <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-370,0,0" FontSize="25">Имя:</Label>
         <TextBox Name="nameText" Width="500" FontSize="25" Height="40" Margin="-120,-280,0,0"></TextBox>
