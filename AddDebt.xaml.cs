@@ -36,10 +36,17 @@ namespace library
             surnamet = surname;
             gradet = grade;
             dayst = days;
-            nameText.Text = namet;
-            surnameText.Text = surnamet;
-            gradeText.Text = gradet;
-            
+            if (namet!="")
+                nameText.Text = namet;
+            if (surnamet!="")
+                surnameText.Text = surnamet;
+            if(gradet!="")
+                gradeText.Text = gradet;
+            if (dayst!=0)
+                limitText.Text = dayst.ToString();
+
+
+
             if (bookcode == 0)
             {
                 bookText.Content = "Нажмите на кнопку выбора";
@@ -107,7 +114,7 @@ namespace library
         public void chooseBookClick (object sender, EventArgs e)
         {
             this.Hide();
-            BookList bookList = new BookList("adddebt", namet, surnamet, gradet, dayst);
+            BookList bookList = new BookList("adddebt", nameText.Text, surnameText.Text, gradeText.Text, ((limitText.Text == "") ? (0) : (Convert.ToInt32(limitText.Text))));
             bookList.Show();
         }
 
