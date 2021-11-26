@@ -42,7 +42,7 @@ namespace library
             
             if (bookcode == 0)
             {
-                bookText.Text = "Нажмите на кнопку выбора";
+                bookText.Content = "Нажмите на кнопку выбора";
             }
             else
             {
@@ -50,7 +50,7 @@ namespace library
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     book = db.books.Where(b => b.code == bookcode).FirstOrDefault();
-                    bookText.Text = book.name;
+                    bookText.Content = book.name;
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace library
             db = new ApplicationContext();
             string name = nameText.Text.ToUpper();
             string surname = surnameText.Text.ToUpper();
-            string books = bookText.Text.ToUpper();
+            string books = bookText.Content.ToString().ToUpper();
             string grade = gradeText.Text.ToUpper();
             string date1 = DateTime.Now.ToString("dd.MM.yyyy");
             string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd.MM.yyyy");

@@ -15,7 +15,7 @@
         <Label  Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-170,0,0" FontSize="25">Фамилия:</Label>
         <TextBox Name="surnameText" Width="500" FontSize="25" Height="40" Margin="-120,-80,0,0"></TextBox>
         <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,30,0,0" FontSize="25">Книга:</Label>
-        <TextBox Name="bookText" Width="500" FontSize="25" FontFamily="Century Gothic" Height="40" Margin="-120,120,0,0"></TextBox>
+        <Label Name="bookText" Width="500" FontSize="25" FontFamily="Century Gothic" Height="40" Margin="-120,120,0,0" Background="#FFE8E9EC"></Label>
         <Button Width="150" Height="40" Margin="600,120,0,0" Content="Выбрать книгу" FontSize="17" FontFamily="Century Gothic" Click="chooseBookClick"></Button>
         <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,230,0,0" FontSize="25">Класс:</Label>
         <TextBox Name="gradeText" FontSize="25" Width="160" Height="40" Margin="-290,239,0,0"></TextBox>
