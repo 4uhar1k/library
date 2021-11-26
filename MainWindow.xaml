@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
     <Grid>
-        <Button Width="35" Height="35" Margin="700,-400,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
-        <Button Width="35" Height="35" Margin="600,-400,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
-        <Label FontSize="35" Height="60" FontFamily="Bahnschrift Light"  Margin="10,25,414,365">VVMLibrary</Label>
-        <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="-450,-150,0,0" FontSize="20" Click="addUser" Content="Добавить читателя" Background="#FF737373"></Button>
-        <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="0,-150,0,0" FontSize="20" Click="addBook" Content="Добавить книгу" Background="#FF787878"></Button>
-        <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="450,-150,0,0" FontSize="20" Content="Создать отчет" Background="#FF757575"></Button>
-        <Button Width="500" Height="70" FontFamily="Comic Sans MS" Margin="150,150,150,50" FontSize="47" Click="showList" Background="#FF797979">Список читателей</Button>
-        <Button Width="500" Height="70" FontFamily="Comic Sans MS" Margin="150,330,150,50" FontSize="47" Click="showBookList" Background="#FF797979">Список книг</Button>
+        <Button Width="45" Height="45" Margin="700,-400,0,0" FontSize="30" Foreground="#FF565656" Click="close" Background="#FFBFCDDB" Name ="closeButton"  BorderBrush="#FFBFCDDB">X</Button>
+        <Button Width="45" Height="45" Margin="600,-400,0,0"  FontSize="30" Foreground="#FF565656" Click="min" Background="#FFBFCDDB" BorderBrush="#FFBFCDDB">-</Button>
+        <Label FontSize="35" Height="60" FontFamily="Century Gothic"   Margin="10,25,414,365">VVMLibrary</Label>
+        <Button Width="200" Height="50" FontFamily="Century Gothic" Margin="-450,-150,0,0" FontSize="20" Click="addUser" Content="Добавить читателя" Background="#FFA5A5A5"></Button>
+        <Button Width="200" Height="50" FontFamily="Century Gothic" Margin="0,-150,0,0" FontSize="20" Click="addBook" Content="Добавить книгу" Background="#FFA5A5A5"></Button>
+        <Button Width="200" Height="50" FontFamily="Century Gothic" Margin="450,-150,0,0" FontSize="20" Content="Создать отчет" Background="#FFA5A5A5"></Button>
+        <Button Width="500" Height="70" FontFamily="Century Gothic" Margin="150,150,150,50" FontSize="47" Click="showList" Background="#FFA5A5A5">Список читателей</Button>
+        <Button Width="500" Height="70" FontFamily="Century Gothic" Margin="150,330,150,50" FontSize="47" Click="showBookList" Background="#FFA5A5A5">Список книг</Button>
         
          
     </Grid>

@@ -30,7 +30,7 @@ namespace library
         public void addUser(object sender, EventArgs e)
         {
             this.Hide();
-            AddDebt adi = new AddDebt();
+            AddDebt adi = new AddDebt(0, "", "", "", 0);
             adi.Show();
         }
 
@@ -44,7 +44,7 @@ namespace library
         public void showBookList(object sender, EventArgs e)
         {
             this.Hide();
-            BookList adi = new BookList();
+            BookList adi = new BookList("mainwindow", "", "", "", 0);
             adi.Show();
         }
 
@@ -63,6 +63,15 @@ namespace library
             this.Hide();
             addBook ad = new addBook();
             ad.Show();
+        }
+
+        private void min(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void colorChangeWhenEntered(object sender, RoutedEventArgs e)
+        {
+            closeButton.Background = Brushes.Black;
         }
     }
 }
