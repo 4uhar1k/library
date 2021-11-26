@@ -29,9 +29,23 @@ namespace library
         Label[] navArray;
         Button[] chooseArray;
         int n = 0;
+
         public BookList()
         {
             InitializeComponent();
+
+        }
+        string window, username, usersur, usergrade;
+        int userdays;
+
+        public BookList(string window, string username, string usersur, string usergrade, int userdays): this()
+        {
+            this.window = window;
+            this.username = username;
+            this.usersur = usersur;
+            this.usergrade = usergrade;
+            this.userdays = userdays;
+
             stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10 };
             for (int j = 0; j < 10; j++)
             {
@@ -55,13 +69,16 @@ namespace library
                 if (book != null && i <= 9)
                 {
                     stacks[i].Visibility = Visibility.Visible;
-                    chooseArray[i].Visibility = Visibility.Hidden;
+                    if (window == "adddebt")
+                            chooseArray[i].Visibility = Visibility.Visible;
+                    else
+                        chooseArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = book.name;
                     authorArray[i].Content = book.author;
                     codeArray[i].Content = book.code;
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
-                    navArray[i].Content = "potom";
+                    navArray[i].Content = book.namount;
 
 
                     i++;
@@ -74,6 +91,8 @@ namespace library
                 next.Visibility = Visibility.Visible;
             }
         }
+
+        
         public void close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -116,13 +135,16 @@ namespace library
                     if (i<=9)
                     {
                         stacks[i].Visibility = Visibility.Visible;
-                        chooseArray[i].Visibility = Visibility.Hidden;
+                        if (window == "adddebt")
+                            chooseArray[i].Visibility = Visibility.Visible;
+                        else
+                            chooseArray[i].Visibility = Visibility.Hidden; 
                         nameArray[i].Content = book.name;
                         authorArray[i].Content = book.author;
                         codeArray[i].Content = book.code;
                         pubArray[i].Content = book.publisher;
                         avArray[i].Content = book.amount;
-                        navArray[i].Content = "potom";
+                        navArray[i].Content = book.namount;
                         i++;
 
                     }
@@ -161,13 +183,16 @@ namespace library
                 if (book != null && book.name.StartsWith(searchBar.Text.ToUpper()) && book.currentid > n && book.currentid <= n + 10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
-                    chooseArray[i].Visibility = Visibility.Hidden;
+                    if (window == "adddebt")
+                        chooseArray[i].Visibility = Visibility.Visible;
+                    else
+                        chooseArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = book.name;
                     authorArray[i].Content = book.author;
                     codeArray[i].Content = book.code;
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
-                    navArray[i].Content = "POtom";
+                    navArray[i].Content = book.namount;
 
                     i++;
 
@@ -201,13 +226,16 @@ namespace library
                 if (book != null && book.name.StartsWith(searchBar.Text.ToUpper()) && book.currentid > n && book.currentid <= n + 10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
-                    chooseArray[i].Visibility = Visibility.Hidden;
+                    if (window == "adddebt")
+                        chooseArray[i].Visibility = Visibility.Visible;
+                    else
+                        chooseArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = book.name;
                     authorArray[i].Content = book.author;
                     codeArray[i].Content = book.code;
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
-                    navArray[i].Content = "POtom";
+                    navArray[i].Content = book.namount;
 
                     i++;
 
@@ -223,6 +251,15 @@ namespace library
             {
                 prev.Visibility = Visibility.Visible;
             }
+        }
+
+        public void chooseBook(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            long code = Convert.ToInt64(codeArray[Array.IndexOf(chooseArray, btn)].Content);
+            this.Hide();
+            AddDebt ad = new AddDebt(code, username, usersur, usergrade, userdays);
+            ad.Show();
         }
     }
 }

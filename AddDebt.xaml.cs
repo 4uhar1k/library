@@ -24,11 +24,40 @@ namespace library
         public AddDebt()
         {
             InitializeComponent();
-            db = new ApplicationContext();
+        }
+
+        long bookcode;
+        string namet, surnamet, gradet;
+        int dayst;
+        public AddDebt(long bookcode, string name, string surname, string grade, int days): this()
+        {
+            this.bookcode = bookcode;
+            namet = name;
+            surnamet = surname;
+            gradet = grade;
+            dayst = days;
+            nameText.Text = namet;
+            surnameText.Text = surnamet;
+            gradeText.Text = gradet;
+            
+            if (bookcode == 0)
+            {
+                bookText.Text = "Нажмите на кнопку выбора";
+            }
+            else
+            {
+                Book book = null;
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    book = db.books.Where(b => b.code == bookcode).FirstOrDefault();
+                    bookText.Text = book.name;
+                }
+            }
         }
 
         public void addInfo(object sender, EventArgs e)
         {
+            db = new ApplicationContext();
             string name = nameText.Text.ToUpper();
             string surname = surnameText.Text.ToUpper();
             string books = bookText.Text.ToUpper();
@@ -49,6 +78,15 @@ namespace library
                 Debt debt = new Debt(currentid, name, surname, books, grade, date1, date2, 0);
                 db.debts.Add(debt);
                 db.SaveChanges();
+            Book book = null;
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    book = db.books.Where(b=> b.code== bookcode).FirstOrDefault();
+                book.amount--;
+                book.namount++;
+                db.SaveChanges();
+            }
+            
                 MessageBox.Show("Запись успешно сохранена.");
                 this.Hide();
                 MainWindow maw = new MainWindow();
@@ -64,6 +102,13 @@ namespace library
         public void min(object sender, EventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        public void chooseBookClick (object sender, EventArgs e)
+        {
+            this.Hide();
+            BookList bookList = new BookList("adddebt", namet, surnamet, gradet, dayst);
+            bookList.Show();
         }
 
         public void mainMenu(object sender, EventArgs e)
