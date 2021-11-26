@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
         Title="addBook" Height="750" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid>
+    <Grid Background="#FFC5D0E6">
         <Button Width="100" Height="30" Margin="370,-700,0,0" Click="mainMenu" >Главное меню</Button>
         <Button Width="35" Height="35" Margin="700,-700,0,0" Click="close" FontSize="20" Foreground="Red" >X</Button>
         <Button Width="35" Height="35" Margin="600,-700,0,0" Click="min" FontSize="20" Foreground="Blue" >-</Button>
