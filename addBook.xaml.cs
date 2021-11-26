@@ -45,7 +45,7 @@ namespace library
                 book = db.books.Where(b=>b.code == code).FirstOrDefault();
                 if (book == null)
                 {
-                    Book book1 = new Book(name, publisher, code, author, amount, currentid);
+                    Book book1 = new Book(name, publisher, code, author, amount, 0, currentid);
                     db.books.Add(book1);
                     db.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена в базу");
