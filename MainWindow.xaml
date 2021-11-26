@@ -9,7 +9,7 @@
     <Grid>
         <Button Width="35" Height="35" Margin="700,-400,0,0" FontSize="20" Foreground="Red" Click="close">X</Button>
         <Button Width="35" Height="35" Margin="600,-400,0,0" FontSize="20" Foreground="Blue" Click="min">-</Button>
-        <Label FontSize="35" Height="60" FontFamily="Bahnschrift Light"  Margin="10,-340,0,0">VVMLibrary</Label>
+        <Label FontSize="35" Height="60" FontFamily="Bahnschrift Light"  Margin="10,25,414,365">VVMLibrary</Label>
         <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="-450,-150,0,0" FontSize="20" Click="addUser" Content="Добавить читателя" Background="#FF737373"></Button>
         <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="0,-150,0,0" FontSize="20" Click="addBook" Content="Добавить книгу" Background="#FF787878"></Button>
         <Button Width="200" Height="50" FontFamily="Comic Sans MS" Margin="450,-150,0,0" FontSize="20" Content="Создать отчет" Background="#FF757575"></Button>
