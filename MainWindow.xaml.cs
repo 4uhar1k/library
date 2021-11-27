@@ -65,10 +65,6 @@ namespace library
             ad.Show();
         }
 
-        private void min(object sender, RoutedEventArgs e)
-        {
-
-        }
         public void colorChangeWhenEntered(object sender, RoutedEventArgs e)
         {
             closeButton.Background = Brushes.Black;

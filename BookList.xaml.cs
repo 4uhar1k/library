@@ -40,11 +40,19 @@ namespace library
 
         public BookList(string window, string username, string usersur, string usergrade, int userdays): this()
         {
+            
             this.window = window;
             this.username = username;
             this.usersur = usersur;
             this.usergrade = usergrade;
             this.userdays = userdays;
+
+            if (window == "adddebt")
+            {
+                backButton.Content = "Назад";
+                backButton.Click -= mainMenu;
+                backButton.Click += addMenu;
+            }
 
             stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10 };
             for (int j = 0; j < 10; j++)
@@ -69,15 +77,37 @@ namespace library
                 if (book != null && i <= 9)
                 {
                     stacks[i].Visibility = Visibility.Visible;
-                    if (window == "adddebt")
-                            chooseArray[i].Visibility = Visibility.Visible;
-                    else
-                        chooseArray[i].Visibility = Visibility.Hidden;
+                    
+                    
                     nameArray[i].Content = book.name;
                     authorArray[i].Content = book.author;
                     codeArray[i].Content = book.code;
+                    long curr = Convert.ToInt64(codeArray[i].Content);
+                    if (window == "adddebt")
+                    {
+                        Book book1;
+                        using (ApplicationContext db = new ApplicationContext())
+                        {
+                            book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
+                        }
+                        if (book1.amount > 0)
+                            chooseArray[i].Visibility = Visibility.Visible;
+                        else
+                            chooseArray[i].Visibility = Visibility.Hidden;
+                    }
+
+                    else
+                        chooseArray[i].Visibility = Visibility.Hidden;
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
+                    Book book2;
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        book2 = db.books.Where(b => b.code == curr).FirstOrDefault();
+                    }
+                    if (book2.amount == 0)
+                        avArray[i].Foreground = Brushes.Red;
+                    
                     navArray[i].Content = book.namount;
 
 
@@ -109,6 +139,13 @@ namespace library
             ma.Show();
         }
 
+        public void addMenu(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddDebt ad = new AddDebt(0, username, usersur, usergrade, userdays);
+            ad.Show();
+        }
+
         public void updLimitOfBook(object sender, EventArgs e)
         {
 
@@ -135,13 +172,26 @@ namespace library
                     if (i<=9)
                     {
                         stacks[i].Visibility = Visibility.Visible;
-                        if (window == "adddebt")
-                            chooseArray[i].Visibility = Visibility.Visible;
-                        else
-                            chooseArray[i].Visibility = Visibility.Hidden; 
+                        
                         nameArray[i].Content = book.name;
                         authorArray[i].Content = book.author;
                         codeArray[i].Content = book.code;
+                        long curr = Convert.ToInt64(codeArray[i].Content);
+                        if (window == "adddebt")
+                        {
+                            Book book1;
+                            using (ApplicationContext db = new ApplicationContext())
+                            {
+                                book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
+                            }
+                            if (book1.amount > 0)
+                                chooseArray[i].Visibility = Visibility.Visible;
+                            else
+                                chooseArray[i].Visibility = Visibility.Hidden;
+                        }
+
+                        else
+                            chooseArray[i].Visibility = Visibility.Hidden;
                         pubArray[i].Content = book.publisher;
                         avArray[i].Content = book.amount;
                         navArray[i].Content = book.namount;
@@ -183,13 +233,25 @@ namespace library
                 if (book != null && book.name.StartsWith(searchBar.Text.ToUpper()) && book.currentid > n && book.currentid <= n + 10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
-                    if (window == "adddebt")
-                        chooseArray[i].Visibility = Visibility.Visible;
-                    else
-                        chooseArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = book.name;
                     authorArray[i].Content = book.author;
                     codeArray[i].Content = book.code;
+                    long curr = Convert.ToInt64(codeArray[i].Content);
+                    if (window == "adddebt")
+                    {
+                        Book book1;
+                        using (ApplicationContext db = new ApplicationContext())
+                        {
+                            book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
+                        }
+                        if (book1.amount > 0)
+                            chooseArray[i].Visibility = Visibility.Visible;
+                        else
+                            chooseArray[i].Visibility = Visibility.Hidden;
+                    }
+
+                    else
+                        chooseArray[i].Visibility = Visibility.Hidden;
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
                     navArray[i].Content = book.namount;
@@ -226,13 +288,26 @@ namespace library
                 if (book != null && book.name.StartsWith(searchBar.Text.ToUpper()) && book.currentid > n && book.currentid <= n + 10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
-                    if (window == "adddebt")
-                        chooseArray[i].Visibility = Visibility.Visible;
-                    else
-                        chooseArray[i].Visibility = Visibility.Hidden;
+
                     nameArray[i].Content = book.name;
                     authorArray[i].Content = book.author;
                     codeArray[i].Content = book.code;
+                    long curr = Convert.ToInt64(codeArray[i].Content);
+                    if (window == "adddebt")
+                    {
+                        Book book1;
+                        using (ApplicationContext db = new ApplicationContext())
+                        {
+                            book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
+                        }
+                        if (book1.amount > 0)
+                            chooseArray[i].Visibility = Visibility.Visible;
+                        else
+                            chooseArray[i].Visibility = Visibility.Hidden;
+                    }
+
+                    else
+                        chooseArray[i].Visibility = Visibility.Hidden;
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
                     navArray[i].Content = book.namount;

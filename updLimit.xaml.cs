@@ -24,16 +24,11 @@ namespace library
         {
             InitializeComponent();
         }
-        string name, surname, grade, book, take, returndate;
+        int currentid;
         
-        public updLimit(string name, string surname, string grade, string book, string take, string returndate): this()
+        public updLimit(int currentid): this()
         {
-            this.name = name;
-            this.surname = surname;
-            this.grade = grade;
-            this.book = book;
-            this.take = take;
-            this.returndate = returndate;
+            this.currentid = currentid;
         }
 
 
@@ -49,7 +44,7 @@ namespace library
             Debt user;
             using (ApplicationContext db = new ApplicationContext())
             {
-                user = db.debts.Where(b => b.name == name && b.surname==surname && b.grade==grade && b.book==book && b.take_date==take && b.return_date==returndate).FirstOrDefault();
+                user = db.debts.Where(b => b.currentid == currentid).FirstOrDefault();
                 user.return_date = s;
                 db.SaveChanges();
                 MessageBox.Show("Книга была успешно продлена.");

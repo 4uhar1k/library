@@ -36,10 +36,17 @@ namespace library
             surnamet = surname;
             gradet = grade;
             dayst = days;
-            nameText.Text = namet;
-            surnameText.Text = surnamet;
-            gradeText.Text = gradet;
-            
+            if (namet!="")
+                nameText.Text = namet;
+            if (surnamet!="")
+                surnameText.Text = surnamet;
+            if(gradet!="")
+                gradeText.Text = gradet;
+            if (dayst!=0)
+                limitText.Text = dayst.ToString();
+
+
+
             if (bookcode == 0)
             {
                 bookText.Content = "Нажмите на кнопку выбора";
@@ -67,7 +74,8 @@ namespace library
             int currentid = 1;
             foreach (Debt debt1 in db.debts)
             {
-                currentid++;
+                if (debt1.currentid != 0)
+                    currentid++;
             }
 
 
@@ -75,7 +83,7 @@ namespace library
             // if (auslander == null)
             //{
             //MessageBox.Show(currentid.ToString());
-                Debt debt = new Debt(currentid, name, surname, books, grade, date1, date2, 0);
+                Debt debt = new Debt(currentid, name, surname, bookcode, grade, date1, date2, 0);
                 db.debts.Add(debt);
                 db.SaveChanges();
             Book book = null;
@@ -107,7 +115,7 @@ namespace library
         public void chooseBookClick (object sender, EventArgs e)
         {
             this.Hide();
-            BookList bookList = new BookList("adddebt", namet, surnamet, gradet, dayst);
+            BookList bookList = new BookList("adddebt", nameText.Text, surnameText.Text, gradeText.Text, ((limitText.Text == "") ? (0) : (Convert.ToInt32(limitText.Text))));
             bookList.Show();
         }
 
