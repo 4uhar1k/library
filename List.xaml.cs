@@ -32,10 +32,12 @@ namespace library
         Label[] limitcheckArray;
         Label[] numArray;
         int n = 0;
+        string bookname;
         public List()
         {
             InitializeComponent();
             stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10};
+            
             for (int j = 0;j<10;j++)
             {                                                                                                                                                                                                                                                                   
                 stacks[j].Visibility = Visibility.Hidden;
@@ -58,14 +60,20 @@ namespace library
 
             foreach (Debt debt in db.debts)
             {
-                if (debt!=null && i<=9 &&   ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)))
+                if (debt!=null && i<=9 &&  debt.debtstate!=3 && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)))
                 {
+                    Book book = null;
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        book = db.books.Where(b => b.code == debt.book).FirstOrDefault();
+                        bookname = book.name;
+                    }
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = debt.name;
                     surnameArray[i].Content= debt.surname;
                     gradeArray[i].Content = debt.grade;
-                    bookArray[i].Content = debt.book;
+                    bookArray[i].Content = bookname;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
                     numArray[i].Content = debt.currentid;
@@ -105,14 +113,9 @@ namespace library
         {
             Button btn = sender as Button;
             //MessageBox.Show(testarr[0].ToString());
-            Label name = nameArray[Array.IndexOf(limitArray, btn)];
-            Label surname = surnameArray[Array.IndexOf(limitArray, btn)];
-            Label grade = gradeArray[Array.IndexOf(limitArray, btn)];
-            Label book = bookArray[Array.IndexOf(limitArray, btn)];
-            Label take = takeArray[Array.IndexOf(limitArray, btn)];
-            Label ret = returnArray[Array.IndexOf(limitArray, btn)];
+            Label cur = numArray[Array.IndexOf(limitArray, btn)];
             this.Hide();
-            updLimit up = new updLimit(name.Content.ToString(), surname.Content.ToString(), grade.Content.ToString(), book.Content.ToString(), take.Content.ToString(), ret.Content.ToString());
+            updLimit up = new updLimit(Convert.ToInt32(cur.Content));
             up.Show();
         }
 
@@ -120,12 +123,7 @@ namespace library
         {
             Button btn = sender as Button;
             //MessageBox.Show(testarr[0].ToString());
-            Label name = nameArray[Array.IndexOf(deleteArray, btn)];
-            Label surname = surnameArray[Array.IndexOf(deleteArray, btn)];
-            Label grade = gradeArray[Array.IndexOf(deleteArray, btn)];
-            Label book = bookArray[Array.IndexOf(deleteArray, btn)];
-            Label take = takeArray[Array.IndexOf(deleteArray, btn)];
-            Label ret = returnArray[Array.IndexOf(deleteArray, btn)];
+            Label cur = numArray[Array.IndexOf(deleteArray, btn)];
             //MessageBox
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите вычеркнуть ученика из списка?", "", MessageBoxButton.YesNo);
             switch (result)
@@ -134,24 +132,35 @@ namespace library
                     return;
                 case MessageBoxResult.Yes:
                     Debt user;
-
+                    Book book;
+                    int curr = Convert.ToInt32(cur.Content);
                     using (ApplicationContext db = new ApplicationContext())
                     {
-                        user = db.debts.Where(b => b.name == name.Content.ToString() && b.surname == surname.Content.ToString() && b.grade == grade.Content.ToString() && b.book == book.Content.ToString() && b.take_date == take.Content.ToString() && b.return_date == ret.Content.ToString()).FirstOrDefault();
-                        db.debts.Remove(user);
-                        db.SaveChanges(); 
-                    }
-                    int curid = 1;
-                    foreach (Debt debt in db.debts)
-                    {
-                        
-                            
-                            debt.currentid = curid;
-                            db.SaveChanges();
+                        user = db.debts.Where(b => b.currentid == curr).FirstOrDefault();
+                        user.debtstate = 3;
+                        user.currentid = 0;
+                        book = db.books.Where(b => b.code == user.book).FirstOrDefault();
+                        book.amount++;
+                        book.namount--;
+                        db.SaveChanges();
+                        int curid = 1;
+                        foreach (Debt debt in db.debts)
+                        {
 
-                        
-                        curid++;
+                            if (debt.debtstate != 3)
+                            {
+                                debt.currentid = curid;
+                                db.SaveChanges();
+                                curid++;
+                            }
+
+
+
+
+                        }
                     }
+                    
+                    
                     this.Hide();
                     MessageBox.Show("Пользователь был успешно удален.");
                     List li = new List();
@@ -195,7 +204,7 @@ namespace library
                 //List li = new List();
                 // li.Show();
                 //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
-                if (debt.surname.StartsWith(searchBar.Text.ToUpper()) && ((debters.IsChecked==true) ? (debt.debtstate>0):(debt.debtstate>-1)))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
+                if (debt.surname.StartsWith(searchBar.Text.ToUpper()) && debt.debtstate != 3 && ((debters.IsChecked==true) ? (debt.debtstate>0):(debt.debtstate>-1)))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                     {
                     maxId++;
                     if (i<=9)
@@ -205,7 +214,7 @@ namespace library
                         nameArray[i].Content = debt.name;
                         surnameArray[i].Content = debt.surname;
                         gradeArray[i].Content = debt.grade;
-                        bookArray[i].Content = debt.book;
+                        bookArray[i].Content = bookname;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
                         numArray[i].Content = debt.currentid;
@@ -271,7 +280,7 @@ namespace library
                     {
 
                         
-                        if (debt.debtstate>0 && debt.surname.StartsWith(searchBar.Text.ToUpper()))
+                        if (debt.debtstate>0 && debt.debtstate != 3 && debt.surname.StartsWith(searchBar.Text.ToUpper()))
                         {
                             maxId++;
                             if (i<=9)
@@ -281,7 +290,7 @@ namespace library
                                 nameArray[i].Content = debt.name;
                                 surnameArray[i].Content = debt.surname;
                                 gradeArray[i].Content = debt.grade;
-                                bookArray[i].Content = debt.book;
+                                bookArray[i].Content = bookname;
                                 takeArray[i].Content = debt.take_date;
                                 returnArray[i].Content = debt.return_date;
                                 numArray[i].Content = debt.currentid;
@@ -321,7 +330,7 @@ namespace library
                 foreach (Debt debt in db.debts)
                 {
                     maxId++;
-                    if (debt != null && i <= 9 && debt.surname.StartsWith(searchBar.Text.ToUpper()))
+                    if (debt != null && i <= 9 && debt.debtstate != 3 && debt.surname.StartsWith(searchBar.Text.ToUpper()))
                     {
                         
                         stacks[i].Visibility = Visibility.Visible;
@@ -329,7 +338,7 @@ namespace library
                         nameArray[i].Content = debt.name;
                         surnameArray[i].Content = debt.surname;
                         gradeArray[i].Content = debt.grade;
-                        bookArray[i].Content = debt.book;
+                        bookArray[i].Content = bookname;
                         takeArray[i].Content = debt.take_date;
                         returnArray[i].Content = debt.return_date;
                         numArray[i].Content = debt.currentid;
@@ -374,14 +383,14 @@ namespace library
             int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.surname.StartsWith(searchBar.Text.ToUpper()) && debt.currentid>n && debt.currentid<=n+10)
+                if (debt != null && debt.debtstate != 3 && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.surname.StartsWith(searchBar.Text.ToUpper()) && debt.currentid>n && debt.currentid<=n+10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = debt.name;
                     surnameArray[i].Content = debt.surname;
                     gradeArray[i].Content = debt.grade;
-                    bookArray[i].Content = debt.book;
+                    bookArray[i].Content = bookname;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
                     numArray[i].Content = debt.currentid;
@@ -428,14 +437,14 @@ namespace library
             int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null && debt.currentid > n && debt.surname.StartsWith(searchBar.Text.ToUpper()) && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.currentid <= n + 10)
+                if (debt != null && debt.currentid > n && debt.debtstate != 3 && debt.surname.StartsWith(searchBar.Text.ToUpper()) && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.currentid <= n + 10)
                 {
                     stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = debt.name;
                     surnameArray[i].Content = debt.surname;
                     gradeArray[i].Content = debt.grade;
-                    bookArray[i].Content = debt.book;
+                    bookArray[i].Content = bookname;
                     takeArray[i].Content = debt.take_date;
                     returnArray[i].Content = debt.return_date;
                     numArray[i].Content = debt.currentid;

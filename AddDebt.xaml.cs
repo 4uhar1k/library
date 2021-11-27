@@ -74,7 +74,8 @@ namespace library
             int currentid = 1;
             foreach (Debt debt1 in db.debts)
             {
-                currentid++;
+                if (debt1.currentid != 0)
+                    currentid++;
             }
 
 
@@ -82,7 +83,7 @@ namespace library
             // if (auslander == null)
             //{
             //MessageBox.Show(currentid.ToString());
-                Debt debt = new Debt(currentid, name, surname, books, grade, date1, date2, 0);
+                Debt debt = new Debt(currentid, name, surname, bookcode, grade, date1, date2, 0);
                 db.debts.Add(debt);
                 db.SaveChanges();
             Book book = null;
