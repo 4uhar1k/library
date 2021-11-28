@@ -28,7 +28,7 @@
             <Label Width="300"  FontSize="20" Margin="-300,-37,-35,-12" FontFamily="Century Gothic">Книга</Label>
             <Label Width="184"  FontSize="20" Margin="200,-37,-35,-12" FontFamily="Century Gothic">Дата получения</Label>
             <Label Width="146"  FontSize="20" Margin="545,-37,-35,-12" FontFamily="Century Gothic">Доступна до</Label>
-            <Label Width="120"  FontSize="20" Margin="1400,-37,-35,-12" FontFamily="Century Gothic">Номер</Label>
+            <Label Width="120"  FontSize="20" Margin="1350,-37,-35,-12" FontFamily="Century Gothic">Номер</Label>
             <StackPanel Name ="panel1" Height="50" Margin="0,50,0,0">
             
                 <Label Width="150" Name="Name1" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
