@@ -26,8 +26,9 @@ namespace library
 
         public Debt() { }
 
-        public Debt(int currentid, string name, string surname, string book, long bookcode, string grade, string take_date, string return_date, int debtstate)
+        public Debt(int id, int currentid, string name, string surname, string book, long bookcode, string grade, string take_date, string return_date, int debtstate)
         {
+            this.id = id;
             this.currentid = currentid;
             this.name = name;
             this.surname = surname;

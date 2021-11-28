@@ -72,10 +72,12 @@ namespace library
             string date1 = DateTime.Now.ToString("dd.MM.yyyy");
             string date2 = DateTime.Now.AddDays(Convert.ToDouble(limitText.Text)).ToString("dd.MM.yyyy");
             int currentid = 1;
+            int id = 1;
             foreach (Debt debt1 in db.debts)
             {
                 if (debt1.currentid != 0)
                     currentid++;
+                id++;
             }
 
 
@@ -83,7 +85,7 @@ namespace library
             // if (auslander == null)
             //{
             //MessageBox.Show(currentid.ToString());
-                Debt debt = new Debt(currentid, name, surname, books, bookcode, grade, date1, date2, 0);
+                Debt debt = new Debt(id, currentid, name, surname, books, bookcode, grade, date1, date2, 0);
                 db.debts.Add(debt);
                 db.SaveChanges();
             Book book = null;
