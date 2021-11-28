@@ -12,7 +12,11 @@
             <Button Width="35" Height="40" Margin="1000,0,0,0" FontSize="30" Foreground="#FF565656" Click="close" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6">X</Button>
             <Button Width="35" Height="40" Margin="900,-40,0,0" FontSize="30" Foreground="#FF565656" Click="min" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6">-</Button>
             <Button Width="100" Height="50" Margin="-1000,0,0,0" FontFamily="Century Gothic" Click="mainMenu">Главное меню</Button>
-            <TextBox Name="searchBar" Width="500" Height="50" TextChanged="search" Margin="350,-40,0,0"></TextBox>
+            <ComboBox Name="searchType" Width="180" Height="30" FontFamily="Century Gothic" SelectionChanged="firstopen" FontSize="17" Margin="30,-30,0,0">
+                <ComboBoxItem Content="По фамилиям" IsSelected="True"/>
+                <ComboBoxItem Content="По книгам"/>
+            </ComboBox>
+            <TextBox Name="searchBar" Width="500" Height="50" TextChanged="search" Margin="750,-40,0,0"></TextBox>
 
             <Button Name="next" Width="204" Height="50" Margin="-420,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="nextpage">Вперед</Button>
             <Button Name="prev" Width="204" Height="50" Margin="-1350,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="previouspage">Назад</Button>

@@ -83,7 +83,7 @@ namespace library
             // if (auslander == null)
             //{
             //MessageBox.Show(currentid.ToString());
-                Debt debt = new Debt(currentid, name, surname, bookcode, grade, date1, date2, 0);
+                Debt debt = new Debt(currentid, name, surname, books, bookcode, grade, date1, date2, 0);
                 db.debts.Add(debt);
                 db.SaveChanges();
             Book book = null;
