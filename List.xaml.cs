@@ -797,6 +797,12 @@ namespace library
                 prev.Visibility = Visibility.Visible;
             }
         }
+
+        public void peopleHistory (object sender, EventArgs e)
+        {
+
+        }
+
         public void close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
