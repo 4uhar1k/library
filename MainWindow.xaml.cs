@@ -48,6 +48,8 @@ namespace library
             adi.Show();
         }
 
+
+
         public void close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -57,8 +59,7 @@ namespace library
         {
             WindowState = WindowState.Minimized;
         }
-
-       public void addBook(object sender, EventArgs e)
+        public void addBook(object sender, EventArgs e)
         {
             this.Hide();
             addBook ad = new addBook();
@@ -68,6 +69,15 @@ namespace library
         public void colorChangeWhenEntered(object sender, RoutedEventArgs e)
         {
             closeButton.Background = Brushes.Black;
+        }
+
+        public void history(object sender, EventArgs e)
+        {
+            this.Hide();
+            List inactive = new List();
+            inactive.inactiveHistory(sender,e);
+            inactive.Show();
+            
         }
     }
 }

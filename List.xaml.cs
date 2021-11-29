@@ -605,6 +605,80 @@ namespace library
 
         }
 
+
+        public void inactiveHistory(object sender, EventArgs e)
+        {
+            int i = 0, maxId = 0;
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
+            debters.Visibility = Visibility.Hidden;
+            actives.Visibility = Visibility.Hidden;
+
+            maxId = 0;
+            foreach (Debt debt in db.debts)
+            {
+                maxId++;
+                if (debt != null && i <= 9 && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
+                {
+
+                    stacks[i].Visibility = Visibility.Visible;
+                    limitcheckArray[i].Visibility = Visibility.Hidden;
+                    nameArray[i].Content = debt.name;
+                    surnameArray[i].Content = debt.surname;
+                    gradeArray[i].Content = debt.grade;
+                    bookArray[i].Content = debt.book;
+                    takeArray[i].Content = debt.take_date;
+                    returnArray[i].Content = debt.return_date;
+                    numArray[i].Content = debt.currentid;
+
+                    if (debt.debtstate == 1)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (debt.debtstate == 2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
+                    }
+                    else if (debt.debtstate == 3)
+                    {
+                        numArray[i].Content = "Неактивен";
+                        numArray[i].FontSize = 15;
+                        numArray[i].Foreground = Brushes.DarkGreen;
+                        limitArray[i].Visibility = Visibility.Hidden;
+                        deleteArray[i].Visibility = Visibility.Hidden;
+                    }
+                    else if (debt.debtstate == 4)
+                    {
+                        numArray[i].Content = "Неактивен";
+                        numArray[i].FontSize = 15;
+                        numArray[i].Foreground = Brushes.DarkOrange;
+                        limitArray[i].Visibility = Visibility.Hidden;
+                        deleteArray[i].Visibility = Visibility.Hidden;
+                    }
+                    else if (debt.debtstate == 5)
+                    {
+                        numArray[i].Content = "Неактивен";
+                        numArray[i].FontSize = 15;
+                        numArray[i].Foreground = Brushes.Red;
+                        limitArray[i].Visibility = Visibility.Hidden;
+                        deleteArray[i].Visibility = Visibility.Hidden;
+                    }
+                    i++;//infolabel.Content += "\n";
+                }
+
+            }
+            if (maxId > n + 10)
+            {
+                next.Visibility = Visibility.Visible;
+            }
+            if (maxId - 10 < n && maxId - 10 > 0)
+            {
+                prev.Visibility = Visibility.Visible;
+            }
+        
+    }
         public void nextpage(object sender, EventArgs e)
         {
             for (int j = 0; j < 10; j++)
@@ -798,11 +872,6 @@ namespace library
             }
         }
 
-        public void peopleHistory (object sender, EventArgs e)
-        {
-
-        }
-
         public void close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -813,5 +882,6 @@ namespace library
             WindowState = WindowState.Minimized;
         }
 
+        
     }
 }

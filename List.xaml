@@ -19,7 +19,7 @@
             <TextBox Name="searchBar" Width="500" Height="50" TextChanged="search" Margin="750,-40,0,0"></TextBox>
 
             <Button Name="next" Width="204" Height="50" Margin="-420,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="nextpage">Вперед</Button>
-            <Button Name="history" Width="100" Height="50" Margin="1400,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="peopleHistory">История</Button>
+           
             <Button Name="prev" Width="204" Height="50" Margin="-1350,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="previouspage">Назад</Button>
             <CheckBox Name="debters" Width="130"  Margin="-1000,0,0,0" FontFamily="Century Gothic" Click="onlyDebt" >Только должники</CheckBox>
             <CheckBox Name="actives" Width="130"  Margin="-1000,10,0,0" FontFamily="Century Gothic" Click="onlyAct" IsChecked="True" >Только активные</CheckBox>
