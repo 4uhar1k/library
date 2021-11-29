@@ -620,8 +620,16 @@ namespace library
                 maxId++;
                 if (debt != null && i <= 9 && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
                 {
+                    if (debt.debtstate < 3)
+                    {
 
-                    stacks[i].Visibility = Visibility.Visible;
+
+                        stacks[i].Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        stacks[i].Visibility = Visibility.Visible;
+                    }
                     limitcheckArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = debt.name;
                     surnameArray[i].Content = debt.surname;
