@@ -12,7 +12,7 @@
         <Label FontSize="35" Height="60" FontFamily="Century Gothic"   Margin="10,25,414,365">VVMLibrary</Label>
         <Button Width="200" Height="50" FontFamily="Century Gothic" Margin="-450,-150,0,0" FontSize="20" Click="addUser" Content="Добавить читателя" Background="#FFA5A5A5"></Button>
         <Button Width="200" Height="50" FontFamily="Century Gothic" Margin="0,-150,0,0" FontSize="20" Click="addBook" Content="Добавить книгу" Background="#FFA5A5A5"></Button>
-        <Button Width="80" Height="45" FontFamily="Century Gothic" Margin="0,-35,0,0" FontSize="12" Content="История" Click="history" Background="#FFA5A5A5"></Button>
+        <Button Width="200" Height="45" FontFamily="Century Gothic" Margin="0,-35,0,0" FontSize="20" Content="История" Click="history" Background="#FFA5A5A5"></Button>
         <Button Width="200" Height="50" FontFamily="Century Gothic" Margin="450,-150,0,0" FontSize="20" Content="Создать отчет" Background="#FFA5A5A5"></Button>
         <Button Width="500" Height="70" FontFamily="Century Gothic" Margin="150,150,150,50" FontSize="47" Click="showList" Background="#FFA5A5A5">Список читателей</Button>
         <Button Width="500" Height="70" FontFamily="Century Gothic" Margin="150,330,150,50" FontSize="47" Click="showBookList" Background="#FFA5A5A5">Список книг</Button>

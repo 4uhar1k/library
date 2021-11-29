@@ -74,9 +74,9 @@ namespace library
         public void history(object sender, EventArgs e)
         {
             this.Hide();
-            List inactive = new List();
-            inactive.inactiveHistory(sender,e);
-            inactive.Show();
+            nonActives no = new nonActives();
+            no.Show();
+
             
         }
     }

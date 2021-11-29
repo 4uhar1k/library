@@ -88,6 +88,9 @@
     <Compile Include="BookList.xaml.cs">
       <DependentUpon>BookList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="nonActives.xaml.cs">
+      <DependentUpon>nonActives.xaml</DependentUpon>
+    </Compile>
     <Compile Include="updLimit.xaml.cs">
       <DependentUpon>updLimit.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="nonActives.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="updLimit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

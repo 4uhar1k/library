@@ -36,23 +36,23 @@ namespace library
         public List()
         {
             InitializeComponent();
-            stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10};
-            
-            for (int j = 0;j<10;j++)
-            {                                                                                                                                                                                                                                                                   
+            stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10 };
+
+            for (int j = 0; j < 10; j++)
+            {
                 stacks[j].Visibility = Visibility.Hidden;
             }
             next.Visibility = Visibility.Hidden;
             prev.Visibility = Visibility.Hidden;
             nameArray = new Label[10] { Name1, Name2, Name3, Name4, Name5, Name6, Name7, Name8, Name9, Name10 };
             surnameArray = new Label[10] { Surname1, Surname2, Surname3, Surname4, Surname5, Surname6, Surname7, Surname8, Surname9, Surname10 };
-            gradeArray = new Label[10] {Grade1, Grade2, Grade3, Grade4, Grade5, Grade6, Grade7, Grade8, Grade9, Grade10 };
+            gradeArray = new Label[10] { Grade1, Grade2, Grade3, Grade4, Grade5, Grade6, Grade7, Grade8, Grade9, Grade10 };
             bookArray = new Label[10] { Book1, Book2, Book3, Book4, Book5, Book6, Book7, Book8, Book9, Book10 };
             takeArray = new Label[10] { TakeDate1, TakeDate2, TakeDate3, TakeDate4, TakeDate5, TakeDate6, TakeDate7, TakeDate8, TakeDate9, TakeDate10 };
             returnArray = new Label[10] { RetutrnDate1, RetutrnDate2, RetutrnDate3, RetutrnDate4, RetutrnDate5, RetutrnDate6, RetutrnDate7, RetutrnDate8, RetutrnDate9, RetutrnDate10 };
             limitArray = new Button[10] { limit1, limit2, limit3, limit4, limit5, limit6, limit7, limit8, limit9, limit10 };
-            deleteArray = new Button[10] { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10};
-            limitcheckArray = new Label[10] { limitcheck1, limitcheck2, limitcheck3, limitcheck4, limitcheck5, limitcheck6, limitcheck7, limitcheck8, limitcheck9, limitcheck10};
+            deleteArray = new Button[10] { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10 };
+            limitcheckArray = new Label[10] { limitcheck1, limitcheck2, limitcheck3, limitcheck4, limitcheck5, limitcheck6, limitcheck7, limitcheck8, limitcheck9, limitcheck10 };
             numArray = new Label[10] { Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9, Num10 };
 
             db = new ApplicationContext();
@@ -60,52 +60,48 @@ namespace library
 
             foreach (Debt debt in db.debts)
             {
-                if (debt!=null && debt.debtstate < 3 && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)))
+                if (debt != null && i <= 9 && debt.debtstate < 3 && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)))
                 {
-                    maxId++;
-                    if (i<=9)
+                    Book book = null;
+                    using (ApplicationContext db = new ApplicationContext())
                     {
-                        Book book = null;
-                        using (ApplicationContext db = new ApplicationContext())
-                        {
-                            book = db.books.Where(b => b.code == debt.bookcode).FirstOrDefault();
-                            bookname = book.name;
-                        }
-                        stacks[i].Visibility = Visibility.Visible;
-                        limitcheckArray[i].Visibility = Visibility.Hidden;
-                        nameArray[i].Content = debt.name;
-                        surnameArray[i].Content = debt.surname;
-                        gradeArray[i].Content = debt.grade;
-                        bookArray[i].Content = debt.book;
-                        takeArray[i].Content = debt.take_date;
-                        returnArray[i].Content = debt.return_date;
-                        numArray[i].Content = debt.currentid;
-                        debt.debtstate = 0;
-                        db.SaveChanges();
-
-                        DateTime t1 = Convert.ToDateTime(debt.return_date);
-                        DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
-                        if (t1 == t2)
-                        {
-                            debt.debtstate = 1;
-                            db.SaveChanges();
-                            limitcheckArray[i].Visibility = Visibility.Visible;
-                            limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                        }
-                        else if (t1 < t2)
-                        {
-                            debt.debtstate = 2;
-                            db.SaveChanges();
-                            limitcheckArray[i].Visibility = Visibility.Visible;
-                            limitcheckArray[i].Foreground = Brushes.Red;
-                        }
-                        i++;
+                        book = db.books.Where(b => b.code == debt.bookcode).FirstOrDefault();
+                        bookname = book.name;
                     }
-                    
-                    
+                    stacks[i].Visibility = Visibility.Visible;
+                    limitcheckArray[i].Visibility = Visibility.Hidden;
+                    nameArray[i].Content = debt.name;
+                    surnameArray[i].Content = debt.surname;
+                    gradeArray[i].Content = debt.grade;
+                    bookArray[i].Content = debt.book;
+                    takeArray[i].Content = debt.take_date;
+                    returnArray[i].Content = debt.return_date;
+                    numArray[i].Content = debt.currentid;
+                    debt.debtstate = 0;
+                    db.SaveChanges();
+
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
+                    {
+                        debt.debtstate = 1;
+                        db.SaveChanges();
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                    }
+                    else if (t1 < t2)
+                    {
+                        debt.debtstate = 2;
+                        db.SaveChanges();
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
+                    }
+                    i++;
+
                 }
+                maxId++;
             }
-            if (maxId>n+10)
+            if (maxId > n + 10)
             {
                 next.Visibility = Visibility.Visible;
             }
@@ -115,7 +111,7 @@ namespace library
         {
             searchType.SelectionChanged += search;
             //searchType.SelectionChanged -= firstopen;
-            
+
         }
 
 
@@ -157,7 +153,7 @@ namespace library
                         foreach (Debt debt in db.debts)
                         {
 
-                            if (debt.debtstate < 3)
+                            if (debt.currentid != 0)
                             {
                                 debt.currentid = curid;
                                 db.SaveChanges();
@@ -169,8 +165,8 @@ namespace library
 
                         }
                     }
-                    
-                    
+
+
                     this.Hide();
                     MessageBox.Show("Пользователь был успешно удален.");
                     List li = new List();
@@ -178,8 +174,8 @@ namespace library
                     break;
             }
 
-            
-            
+
+
         }
         public void mainMenu(object sender, EventArgs e)
         {
@@ -200,93 +196,60 @@ namespace library
             prev.Visibility = Visibility.Hidden;
             //MessageBox.Show($"{user.surname.Contains(searchBar.Text.ToLower())}");
             for (int j = 0; j < 10; j++)
-                {
-                    stacks[j].Visibility = Visibility.Hidden;
-                }
-            //MessageBox.Show(actives.IsChecked.ToString());
+            {
+                stacks[j].Visibility = Visibility.Hidden;
+            }
+
             foreach (Debt debt in db.debts)
+            {
+                //MessageBox.Show(searchBar.Text);
+
+                //MessageBox.Show($"{debt.name} , {debt.surname}, {debt.grade}, {debt.book}");
+
+                //this.Hide();
+                //List li = new List();
+                // li.Show();
+                //MessageBox.Show($"{debt.surname} , {searchBar.Text.ToLower()} : {debt.surname.Contains(searchBar.Text.ToLower())}");
+                if (((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))) && debt.debtstate < 3 && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                 {
-                if ( ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))) &  ((debters.IsChecked==true) ? (debt.debtstate>0):(debt.debtstate>=0)))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
+                    maxId++;
+                    if (i <= 9)
                     {
-                    if ((actives.IsChecked == true) ? (debt.debtstate < 3) : (debt.debtstate >= 0))
-                    {
-                        maxId++;
-                        if (i <= 9)
+                        stacks[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Visibility = Visibility.Hidden;
+                        nameArray[i].Content = debt.name;
+                        surnameArray[i].Content = debt.surname;
+                        gradeArray[i].Content = debt.grade;
+                        bookArray[i].Content = debt.book;
+                        takeArray[i].Content = debt.take_date;
+                        returnArray[i].Content = debt.return_date;
+                        numArray[i].Content = debt.currentid;
+
+
+                        Debt userTest = null;
+                        using (ApplicationContext db = new ApplicationContext())
                         {
-                            stacks[i].Visibility = Visibility.Visible;
-                            limitcheckArray[i].Visibility = Visibility.Hidden;
-                            nameArray[i].Content = debt.name;
-                            surnameArray[i].Content = debt.surname;
-                            gradeArray[i].Content = debt.grade;
-                            bookArray[i].Content = debt.book;
-                            takeArray[i].Content = debt.take_date;
-                            returnArray[i].Content = debt.return_date;
-                            
-                            
-                            if (debt.debtstate < 3)
-                            {
-                                numArray[i].FontSize = 20;
-                                numArray[i].Foreground = Brushes.Black;
-                                numArray[i].Content = debt.currentid;
-                                limitArray[i].Visibility = Visibility.Visible;
-                                deleteArray[i].Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
-                                if (debt.debtstate == 3)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.DarkGreen;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                                else if (debt.debtstate == 4)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.DarkOrange;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                                else if (debt.debtstate == 5)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.Red;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                            }
-                            
-
-
-                            Debt userTest = null;
-                            using (ApplicationContext db = new ApplicationContext())
-                            {
-                                userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
-                            }
-                            //MessageBox.Show(userTest.name);
-
-                            if (debt.debtstate == 1)
-                            {
-                                limitcheckArray[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                            }
-                            else if (debt.debtstate == 2)
-                            {
-                                limitcheckArray[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Foreground = Brushes.Red;
-                            }
-                            i++;
+                            userTest = db.debts.Where(b => b.name == debt.name && b.surname == debt.surname && b.grade == debt.grade && b.book == debt.book && b.take_date == debt.take_date && b.return_date == debt.return_date).FirstOrDefault();
                         }
-                    }
-                    
-                        
-                    }
+                        //MessageBox.Show(userTest.name);
 
+                        if (debt.debtstate == 1)
+                        {
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Foreground = Brushes.DarkOrange;
+                        }
+                        else if (debt.debtstate == 2)
+                        {
+                            limitcheckArray[i].Visibility = Visibility.Visible;
+                            limitcheckArray[i].Foreground = Brushes.Red;
+                        }
+                        i++;
+                    }
 
                 }
+
+
+            }
 
             if (maxId > n + 10)
             {
@@ -322,11 +285,11 @@ namespace library
                     if (debt != null)
                     {
 
-                        
-                        if (debt.debtstate>0 && debt.debtstate < 3 && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
+
+                        if (debt.debtstate > 0 && debt.debtstate < 3 && ((searchType.Text == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
                         {
                             maxId++;
-                            if (i<=9)
+                            if (i <= 9)
                             {
                                 stacks[i].Visibility = Visibility.Visible;
                                 limitcheckArray[i].Visibility = Visibility.Hidden;
@@ -338,178 +301,10 @@ namespace library
                                 returnArray[i].Content = debt.return_date;
                                 numArray[i].Content = debt.currentid;
                                 limitcheckArray[i].Visibility = Visibility.Visible;
-                                if (debt.debtstate==1)
-                                    limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                                if (debt.debtstate==2)
-                                    limitcheckArray[i].Foreground = Brushes.Red;
-                                i++;
-                            }
-                            
-                            
-                            
-                        }
-
-
-
-                        //infolabel.Content += "\n";
-                    }
-                    
-
-                }
-
-                if (maxId > n + 10)
-                {
-                    next.Visibility = Visibility.Visible;
-                }
-                if (maxId - 10 < n && maxId-10>0)
-                {
-                    prev.Visibility = Visibility.Visible;
-                }
-
-            }
-            else
-            {
-                i = 0;
-                maxId = 0;
-                for (int j = 0; j < 10; j++)
-                {
-                    stacks[j].Visibility = Visibility.Hidden;
-                }
-                foreach (Debt debt in db.debts)
-                {
-                    
-                    if (debt != null && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
-                    {
-                        if ((actives.IsChecked == true) ? (debt.debtstate < 3) : (debt.debtstate >= 0) )
-                        {
-                            maxId++;
-
-                            if (i<=9)
-                            {
-                                stacks[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Visibility = Visibility.Hidden;
-                                nameArray[i].Content = debt.name;
-                                surnameArray[i].Content = debt.surname;
-                                gradeArray[i].Content = debt.grade;
-                                bookArray[i].Content = debt.book;
-                                takeArray[i].Content = debt.take_date;
-                                returnArray[i].Content = debt.return_date;
-                                if (debt.debtstate < 3)
-                                {
-                                    numArray[i].FontSize = 20;
-                                    numArray[i].Foreground = Brushes.Black;
-                                    numArray[i].Content = debt.currentid;
-                                    limitArray[i].Visibility = Visibility.Visible;
-                                    deleteArray[i].Visibility = Visibility.Visible;
-                                }
-                                else
-                                {
-                                    if (debt.debtstate == 3)
-                                    {
-                                        numArray[i].Content = "Неактивен";
-                                        numArray[i].FontSize = 15;
-                                        numArray[i].Foreground = Brushes.DarkGreen;
-                                        limitArray[i].Visibility = Visibility.Hidden;
-                                        deleteArray[i].Visibility = Visibility.Hidden;
-                                    }
-                                    else if (debt.debtstate == 4)
-                                    {
-                                        numArray[i].Content = "Неактивен";
-                                        numArray[i].FontSize = 15;
-                                        numArray[i].Foreground = Brushes.DarkOrange;
-                                        limitArray[i].Visibility = Visibility.Hidden;
-                                        deleteArray[i].Visibility = Visibility.Hidden;
-                                    }
-                                    else if (debt.debtstate == 5)
-                                    {
-                                        numArray[i].Content = "Неактивен";
-                                        numArray[i].FontSize = 15;
-                                        numArray[i].Foreground = Brushes.Red;
-                                        limitArray[i].Visibility = Visibility.Hidden;
-                                        deleteArray[i].Visibility = Visibility.Hidden;
-                                    }
-                                }
                                 if (debt.debtstate == 1)
-                                {
-                                    limitcheckArray[i].Visibility = Visibility.Visible;
                                     limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                                }
-                                else if (debt.debtstate == 2)
-                                {
-                                    limitcheckArray[i].Visibility = Visibility.Visible;
+                                if (debt.debtstate == 2)
                                     limitcheckArray[i].Foreground = Brushes.Red;
-                                }
-                                i++;
-                            }
-                            
-                        }
-
-                        
-                        //infolabel.Content += "\n";
-                    }
-
-                }
-                if (maxId > n + 10)
-                {
-                    next.Visibility = Visibility.Visible;
-                }
-                if (maxId - 10 < n && maxId - 10 > 0)
-                {
-                    prev.Visibility = Visibility.Visible;
-                }
-            }
-
-        }
-
-        public void onlyAct(object sender, EventArgs e)
-        {
-            int i = 0, maxId = 0;
-            next.Visibility = Visibility.Hidden;
-            prev.Visibility = Visibility.Hidden;
-            if (actives.IsChecked == true)
-            {
-                debters.IsChecked = false;
-                debters.Visibility = Visibility.Visible;
-                for (int j = 0; j < 10; j++)
-                {
-                    stacks[j].Visibility = Visibility.Hidden;
-                }
-                foreach (Debt debt in db.debts)
-                {
-                    if (debt != null)
-                    {
-
-
-                        if (debt.debtstate < 3 && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
-                        {
-                            maxId++;
-                            if (i <= 9)
-                            {
-
-                                stacks[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Visibility = Visibility.Hidden;
-                                nameArray[i].Content = debt.name;
-                                surnameArray[i].Content = debt.surname;
-                                gradeArray[i].Content = debt.grade;
-                                bookArray[i].Content = debt.book;
-                                takeArray[i].Content = debt.take_date;
-                                returnArray[i].Content = debt.return_date;
-                                numArray[i].Content = debt.currentid;
-                                numArray[i].FontSize = 20;
-                                numArray[i].Foreground = Brushes.Black;
-                                limitArray[i].Visibility = Visibility.Visible;
-                                deleteArray[i].Visibility = Visibility.Visible;
-                                if (debt.debtstate == 1)
-                                {
-                                    limitcheckArray[i].Visibility = Visibility.Visible;
-                                    limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                                }
-                                else if (debt.debtstate == 2)
-                                {
-                                    limitcheckArray[i].Visibility = Visibility.Visible;
-                                    limitcheckArray[i].Foreground = Brushes.Red;
-                                }
-
                                 i++;
                             }
 
@@ -537,12 +332,11 @@ namespace library
             }
             else
             {
-                debters.Visibility = Visibility.Hidden;
                 maxId = 0;
                 foreach (Debt debt in db.debts)
                 {
                     maxId++;
-                    if (debt != null && i <= 9  && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
+                    if (debt != null && i <= 9 && debt.debtstate < 3 && ((searchType.Text == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
                     {
 
                         stacks[i].Visibility = Visibility.Visible;
@@ -565,30 +359,6 @@ namespace library
                             limitcheckArray[i].Visibility = Visibility.Visible;
                             limitcheckArray[i].Foreground = Brushes.Red;
                         }
-                        else if (debt.debtstate == 3)
-                        {
-                            numArray[i].Content = "Неактивен";
-                            numArray[i].FontSize = 15;
-                            numArray[i].Foreground = Brushes.DarkGreen;
-                            limitArray[i].Visibility = Visibility.Hidden;
-                            deleteArray[i].Visibility = Visibility.Hidden;
-                        }
-                        else if (debt.debtstate == 4)
-                        {
-                            numArray[i].Content = "Неактивен";
-                            numArray[i].FontSize = 15;
-                            numArray[i].Foreground = Brushes.DarkOrange;
-                            limitArray[i].Visibility = Visibility.Hidden;
-                            deleteArray[i].Visibility = Visibility.Hidden;
-                        }
-                        else if (debt.debtstate == 5)
-                        {
-                            numArray[i].Content = "Неактивен";
-                            numArray[i].FontSize = 15;
-                            numArray[i].Foreground = Brushes.Red;
-                            limitArray[i].Visibility = Visibility.Hidden;
-                            deleteArray[i].Visibility = Visibility.Hidden;
-                        }
                         i++;//infolabel.Content += "\n";
                     }
 
@@ -605,31 +375,23 @@ namespace library
 
         }
 
-
-        public void inactiveHistory(object sender, EventArgs e)
+        public void nextpage(object sender, EventArgs e)
         {
-            int i = 0, maxId = 0;
+            for (int j = 0; j < 10; j++)
+            {
+                stacks[j].Visibility = Visibility.Hidden;
+            }
             next.Visibility = Visibility.Hidden;
             prev.Visibility = Visibility.Hidden;
-            debters.Visibility = Visibility.Hidden;
-            actives.Visibility = Visibility.Hidden;
-
-            maxId = 0;
+            db = new ApplicationContext();
+            int i = 0;
+            n += 10;
+            int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                maxId++;
-                if (debt != null && i <= 9 && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
+                if (debt != null && debt.debtstate < 3 && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && ((searchType.Text == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))) && debt.currentid > n && debt.currentid <= n + 10)
                 {
-                    if (debt.debtstate < 3)
-                    {
-
-
-                        stacks[i].Visibility = Visibility.Hidden;
-                    }
-                    else
-                    {
-                        stacks[i].Visibility = Visibility.Visible;
-                    }
+                    stacks[i].Visibility = Visibility.Visible;
                     limitcheckArray[i].Visibility = Visibility.Hidden;
                     nameArray[i].Content = debt.name;
                     surnameArray[i].Content = debt.surname;
@@ -639,142 +401,24 @@ namespace library
                     returnArray[i].Content = debt.return_date;
                     numArray[i].Content = debt.currentid;
 
-                    if (debt.debtstate == 1)
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
                     {
                         limitcheckArray[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Foreground = Brushes.DarkOrange;
                     }
-                    else if (debt.debtstate == 2)
+                    else if (t1 < t2)
                     {
                         limitcheckArray[i].Visibility = Visibility.Visible;
                         limitcheckArray[i].Foreground = Brushes.Red;
                     }
-                    else if (debt.debtstate == 3)
-                    {
-                        numArray[i].Content = "Неактивен";
-                        numArray[i].FontSize = 15;
-                        numArray[i].Foreground = Brushes.DarkGreen;
-                        limitArray[i].Visibility = Visibility.Hidden;
-                        deleteArray[i].Visibility = Visibility.Hidden;
-                    }
-                    else if (debt.debtstate == 4)
-                    {
-                        numArray[i].Content = "Неактивен";
-                        numArray[i].FontSize = 15;
-                        numArray[i].Foreground = Brushes.DarkOrange;
-                        limitArray[i].Visibility = Visibility.Hidden;
-                        deleteArray[i].Visibility = Visibility.Hidden;
-                    }
-                    else if (debt.debtstate == 5)
-                    {
-                        numArray[i].Content = "Неактивен";
-                        numArray[i].FontSize = 15;
-                        numArray[i].Foreground = Brushes.Red;
-                        limitArray[i].Visibility = Visibility.Hidden;
-                        deleteArray[i].Visibility = Visibility.Hidden;
-                    }
-                    i++;//infolabel.Content += "\n";
+                    i++;
+
                 }
+                maxId++;
 
             }
-            if (maxId > n + 10)
-            {
-                next.Visibility = Visibility.Visible;
-            }
-            if (maxId - 10 < n && maxId - 10 > 0)
-            {
-                prev.Visibility = Visibility.Visible;
-            }
-        
-    }
-        public void nextpage(object sender, EventArgs e)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                stacks[j].Visibility = Visibility.Hidden;
-            }
-            next.Visibility = Visibility.Hidden;
-            prev.Visibility = Visibility.Hidden;
-            
-            db = new ApplicationContext();
-            int i = 0;
-            n += 10;
-            int maxId = 0;
-            foreach (Debt debt in db.debts)
-            {
-                if (debt != null && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
-                {
-                    if ((actives.IsChecked == true) ? (debt.debtstate < 3) : (debt.debtstate >= 0) )
-                    {
-                        if (i <= 9 && debt.id >= n + i)
-                        {
-                            stacks[i].Visibility = Visibility.Visible;
-                            limitcheckArray[i].Visibility = Visibility.Hidden;
-                            nameArray[i].Content = debt.name;
-                            surnameArray[i].Content = debt.surname;
-                            gradeArray[i].Content = debt.grade;
-                            bookArray[i].Content = debt.book;
-                            takeArray[i].Content = debt.take_date;
-                            returnArray[i].Content = debt.return_date;
-                            if (debt.debtstate < 3)
-                            {
-                                numArray[i].FontSize = 20;
-                                numArray[i].Foreground = Brushes.Black;
-                                numArray[i].Content = debt.currentid;
-                                limitArray[i].Visibility = Visibility.Visible;
-                                deleteArray[i].Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
-                                if (debt.debtstate == 3)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.DarkGreen;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                                else if (debt.debtstate == 4)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.DarkOrange;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                                else if (debt.debtstate == 5)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.Red;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                            }
-                            if (debt.debtstate == 1)
-                            {
-                                limitcheckArray[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                            }
-                            else if (debt.debtstate == 2)
-                            {
-                                limitcheckArray[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Foreground = Brushes.Red;
-                            }
-                            i++;
-                        }
-                        
-
-                        maxId++;
-                    }
-
-
-                    //infolabel.Content += "\n";
-                }
-                
-
-            }
-            MessageBox.Show($"{maxId}, {n}");
             if (maxId > n + 10)
             {
                 next.Visibility = Visibility.Visible;
@@ -799,75 +443,34 @@ namespace library
             int maxId = 0;
             foreach (Debt debt in db.debts)
             {
-                if (debt != null && ((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))))
+                if (debt != null && debt.currentid > n && debt.debtstate < 3 && ((searchType.Text == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))) && ((debters.IsChecked == true) ? (debt.debtstate > 0) : (debt.debtstate > -1)) && debt.currentid <= n + 10)
                 {
-                    if ((actives.IsChecked == true) ? (debt.debtstate < 3) : (debt.debtstate >= 0))
+                    stacks[i].Visibility = Visibility.Visible;
+                    limitcheckArray[i].Visibility = Visibility.Hidden;
+                    nameArray[i].Content = debt.name;
+                    surnameArray[i].Content = debt.surname;
+                    gradeArray[i].Content = debt.grade;
+                    bookArray[i].Content = debt.book;
+                    takeArray[i].Content = debt.take_date;
+                    returnArray[i].Content = debt.return_date;
+                    numArray[i].Content = debt.currentid;
+
+                    DateTime t1 = Convert.ToDateTime(debt.return_date);
+                    DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+                    if (t1 == t2)
                     {
-                        if (i <= 9 && debt.id >= n + i)
-                        {
-                            stacks[i].Visibility = Visibility.Visible;
-                            limitcheckArray[i].Visibility = Visibility.Hidden;
-                            nameArray[i].Content = debt.name;
-                            surnameArray[i].Content = debt.surname;
-                            gradeArray[i].Content = debt.grade;
-                            bookArray[i].Content = debt.book;
-                            takeArray[i].Content = debt.take_date;
-                            returnArray[i].Content = debt.return_date;
-                            if (debt.debtstate < 3)
-                            {
-                                numArray[i].FontSize = 20;
-                                numArray[i].Foreground = Brushes.Black;
-                                numArray[i].Content = debt.currentid;
-                                limitArray[i].Visibility = Visibility.Visible;
-                                deleteArray[i].Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
-                                if (debt.debtstate == 3)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.DarkGreen;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                                else if (debt.debtstate == 4)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.DarkOrange;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                                else if (debt.debtstate == 5)
-                                {
-                                    numArray[i].Content = "Неактивен";
-                                    numArray[i].FontSize = 15;
-                                    numArray[i].Foreground = Brushes.Red;
-                                    limitArray[i].Visibility = Visibility.Hidden;
-                                    deleteArray[i].Visibility = Visibility.Hidden;
-                                }
-                            }
-                            if (debt.debtstate == 1)
-                            {
-                                limitcheckArray[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Foreground = Brushes.DarkOrange;
-                            }
-                            else if (debt.debtstate == 2)
-                            {
-                                limitcheckArray[i].Visibility = Visibility.Visible;
-                                limitcheckArray[i].Foreground = Brushes.Red;
-                            }
-                            i++;
-                        }
-
-
-                        maxId++;
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.DarkOrange;
                     }
+                    else if (t1 < t2)
+                    {
+                        limitcheckArray[i].Visibility = Visibility.Visible;
+                        limitcheckArray[i].Foreground = Brushes.Red;
+                    }
+                    i++;//infolabel.Content += "\n";
 
-
-                    //infolabel.Content += "\n";
                 }
+                maxId++;
 
             }
             if (maxId > n + 10)
@@ -879,7 +482,6 @@ namespace library
                 prev.Visibility = Visibility.Visible;
             }
         }
-
         public void close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -890,6 +492,5 @@ namespace library
             WindowState = WindowState.Minimized;
         }
 
-        
     }
 }

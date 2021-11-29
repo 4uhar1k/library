@@ -1,4 +1,4 @@
-﻿<Window x:Class="library.List"
+﻿<Window x:Class="library.nonActives"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="List" Height="500"  Width="1600" WindowStartupLocation="CenterScreen"  WindowStyle="None" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center">
     <ScrollViewer CanContentScroll="True" VerticalAlignment="Center"  Width="1600" HorizontalAlignment="Stretch" Background="#FFC5D0E6">
-        
+
         <StackPanel Orientation="Vertical"  HorizontalAlignment="Right" Width="1550" VerticalAlignment="Center" Background="#FFC5D0E6">
             <Button Width="35" Height="40" Margin="1000,0,0,0" FontSize="30" Foreground="#FF565656" Click="close" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6">X</Button>
             <Button Width="35" Height="40" Margin="900,-40,0,0" FontSize="30" Foreground="#FF565656" Click="min" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6">-</Button>
@@ -19,9 +19,9 @@
             <TextBox Name="searchBar" Width="500" Height="50" TextChanged="search" Margin="750,-40,0,0"></TextBox>
 
             <Button Name="next" Width="204" Height="50" Margin="-420,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="nextpage">Вперед</Button>
-           
+
             <Button Name="prev" Width="204" Height="50" Margin="-1350,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="previouspage">Назад</Button>
-            <CheckBox Name="debters" Width="130"  Margin="-1000,0,0,0" FontFamily="Century Gothic" Click="onlyDebt" >Только должники</CheckBox>
+            
 
             <Label Width="150"  FontSize="20" Margin="-1400,20,0,0" FontFamily="Century Gothic">Имя</Label>
             <Label Width="150"  FontSize="20" Margin="-1070,-37,-35,-12" FontFamily="Century Gothic">Фамилия</Label>
@@ -29,19 +29,17 @@
             <Label Width="300"  FontSize="20" Margin="-300,-37,-35,-12" FontFamily="Century Gothic">Книга</Label>
             <Label Width="184"  FontSize="20" Margin="200,-37,-35,-12" FontFamily="Century Gothic">Дата получения</Label>
             <Label Width="146"  FontSize="20" Margin="545,-37,-35,-12" FontFamily="Century Gothic">Доступна до</Label>
-            <Label Width="120"  FontSize="20" Margin="1350,-37,-35,-12" FontFamily="Century Gothic">Номер</Label>
+            <Label Width="120"  FontSize="20" Margin="1050,-37,-35,-12" FontFamily="Century Gothic">Статус</Label>
             <StackPanel Name ="panel1" Height="50" Margin="0,50,0,0">
-            
+
                 <Label Width="150" Name="Name1" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
                 <Label Width="150" Name="Surname1" FontSize="20" Margin="-1070,-37,-35,-12">aaa</Label>
                 <Label Width="100" Name="Grade1" FontSize="20" Margin="-680,-37,-35,-12">aaa</Label>
                 <Label Width="300" Name="Book1" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate1" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate1" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num1" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit1" Width="100" Height="30" FontFamily="Century Gothic" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete1" Width="100" Height="30" FontFamily="Century Gothic" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck1" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num1" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
+                
             </StackPanel>
             <StackPanel Name ="panel2" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name2" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -49,11 +47,8 @@
                 <Label Width="100" Name="Grade2" FontSize="20" Margin="-680,-37,-35,-12">aaa</Label>
                 <Label Width="300" Name="Book2" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate2" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="RetutrnDate2" FontSize="20" Margin="570,-37,-35,-12">aaa</Label> 
-                <Label Width="120" Name="Num2" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit2" Width="100" Height="30" FontFamily="Century Gothic" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete2" Width="100" Height="30" FontFamily="Century Gothic" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck2" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="RetutrnDate2" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
+                <Label Width="120" Name="Num2" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel3" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name3" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -62,10 +57,7 @@
                 <Label Width="300" Name="Book3" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate3" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate3" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num3" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit3" Width="100" Height="30" FontFamily="Century Gothic" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete3" Width="100" Height="30" FontFamily="Century Gothic" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck3" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num3" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel4" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name4" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -74,10 +66,7 @@
                 <Label Width="300" Name="Book4" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate4" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate4" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num4" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit4" Width="100" Height="30" FontFamily="Century Gothic" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete4" Width="100" Height="30" FontFamily="Century Gothic" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck4" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num4" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel5" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name5" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -86,10 +75,7 @@
                 <Label Width="300" Name="Book5" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate5" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate5" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num5" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit5" Width="100" Height="30" FontFamily="Century Gothic" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete5" Width="100" Height="30" FontFamily="Century Gothic" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck5" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num5" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel6" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name6" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -98,10 +84,7 @@
                 <Label Width="300" Name="Book6" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate6" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate6" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num6" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit6" Width="100" Height="30" FontFamily="Century Gothic" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete6" Width="100" Height="30" FontFamily="Century Gothic" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck6" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num6" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel7" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name7" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -110,10 +93,7 @@
                 <Label Width="300" Name="Book7" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate7" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate7" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num7" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit7" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete7" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck7" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num7" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel8" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name8" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -122,10 +102,7 @@
                 <Label Width="300" Name="Book8" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate8" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate8" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num8" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit8" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete8" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck8" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num8" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel9" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name9" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -134,10 +111,7 @@
                 <Label Width="300" Name="Book9" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate9" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate9" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num9" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit9" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete9" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck9" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num9" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
             <StackPanel Name ="panel10" Height="50" Margin="0,0,0,0">
                 <Label Width="150" Name="Name10" FontSize="20" Margin="-1400,0,0,0">aaa</Label>
@@ -146,12 +120,9 @@
                 <Label Width="300" Name="Book10" FontSize="20" Margin="-300,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="TakeDate10" FontSize="20" Margin="250,-37,-35,-12">aaa</Label>
                 <Label Width="120" Name="RetutrnDate10" FontSize="20" Margin="570,-37,-35,-12">aaa</Label>
-                <Label Width="120" Name="Num10" FontSize="20" Margin="1400,-37,-35,-12">aaa</Label>
-                <Button Name="limit10" Width="100" Height="30" Margin="870,-30,0,0" Content="Продлить книгу" Click="updLimitOfBook"></Button>
-                <Button Name="delete10" Width="100" Height="30" Margin="1090,-30,0,0" Content="Удалить" Click="deleteDebt"></Button>
-                <Label Name="limitcheck10" Width="50" Margin="1290,-40,0,0" FontSize="30" Foreground="DarkGreen">!</Label>
+                <Label Width="120" Name="Num10" FontSize="20" Margin="1050,-37,-35,-12">aaa</Label>
             </StackPanel>
-            
+
         </StackPanel>
     </ScrollViewer>
 </Window>
