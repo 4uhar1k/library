@@ -18,7 +18,8 @@ namespace library
         public long code { get; set; }
         public string author { get; set; }
         public int amount { get; set; }
-
+        public int category { get; set; }
+        public string language { get; set; }
         public int namount { get; set; }
         public int currentid { get; set; }
         
@@ -28,12 +29,14 @@ namespace library
 
         }
 
-        public Book(string name, string publisher, long code, string author, int amount, int namount, int currentid)
+        public Book(string name, string publisher, long code, string author, int category, string language, int amount, int namount, int currentid)
         {
             this.name = name;
             this.publisher = publisher;
             this.code = code;
             this.author = author;
+            this.category = category;
+            this.language = language;
             this.amount = amount;
             this.namount = namount;
             this.currentid = currentid;

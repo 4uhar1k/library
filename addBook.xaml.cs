@@ -31,7 +31,9 @@ namespace library
             string name = bookNameTextBox.Text.ToUpper();
             string publisher = isdatelBookTextBox.Text;
             long code = Convert.ToInt64(bookCodeTextBox.Text);
-            string author = bookAuthorTextBox.Text;
+            string author = bookAuthorTextBox.Text.ToUpper();
+            int category = Convert.ToInt32(categoryText.Text);
+            string language = langText.Text;
             int amount = Convert.ToInt32(amountText.Text);
             
             Book book = null;
@@ -45,7 +47,7 @@ namespace library
                 book = db.books.Where(b=>b.code == code).FirstOrDefault();
                 if (book == null)
                 {
-                    Book book1 = new Book(name, publisher, code, author, amount, 0, currentid);
+                    Book book1 = new Book(name, publisher, code, author, category, language, amount, 0, currentid);
                     db.books.Add(book1);
                     db.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена в базу");
