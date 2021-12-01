@@ -61,7 +61,8 @@ namespace library
                     using (ApplicationContext db = new ApplicationContext())
                     {
                         book = db.books.Where(b => b.code == debt.bookcode).FirstOrDefault();
-                        bookname = book.name;
+                        //if (book!=null)
+                            bookname = book.name;
                     }
                     stacks[i].Visibility = Visibility.Visible;
                     nameArray[i].Content = debt.name;
