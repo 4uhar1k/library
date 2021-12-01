@@ -5,37 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="addBook" Height="1050" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="addBook" HorizontalAlignment="Stretch" Height="750" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFC5D0E6">
-        <Button Width="100" Height="30" FontFamily="Century Gothic" Margin="370,-1000,0,0" Click="mainMenu" >Главное меню</Button>
-        <Button Width="35" Height="40" Margin="700,-1000,0,0" Click="close" FontSize="30" Foreground="#FF565656" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6" >X</Button>
-        <Button Width="35" Height="40" Margin="600,-1000,0,0" Click="min" FontSize="30" Foreground="#FF565656" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6" >-</Button>
-        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-970,0,0" FontSize="25">Название книги</Label>
-        <TextBox Name="bookNameTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-880,0,0"></TextBox>
-        <Label  Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-730,0,0" FontSize="25">Автор</Label>
-        <TextBox Name="bookAuthorTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-640,0,0"></TextBox>
-        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-450,0,0" FontSize="25">Код книги</Label>
-        <TextBox Name="bookCodeTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-360,0,0"></TextBox>
+        <Button Width="100" Height="30" FontFamily="Century Gothic" Margin="370,-700,0,0" Click="mainMenu" >Главное меню</Button>
+        <Button Width="35" Height="40" Margin="700,-700,0,0" Click="close" FontSize="30" Foreground="#FF565656" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6" >X</Button>
+        <Button Width="35" Height="40" Margin="600,-700,0,0" Click="min" FontSize="30" Foreground="#FF565656" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6" >-</Button>
+        <Label Width="400" VerticalAlignment="Top" Height="40" FontFamily="Century Gothic" Margin="90,15,310,0" FontSize="25">Название книги</Label>
+        <TextBox Name="bookNameTextBox" Width="500" FontSize="23" Height="40" Margin="90,55,210,655"></TextBox>
+        <Label  Width="400" VerticalAlignment="Center" Height="40" FontFamily="Century Gothic" Margin="90,90,310,605" FontSize="25">Издатель</Label>
+        <TextBox Name="isdatelBookTextBox" Width="500" FontSize="23" Height="40" Margin="90,139,210,571"></TextBox>
+        <Label Width="400" VerticalAlignment="Top" Height="40" FontFamily="Century Gothic" Margin="90,182,310,0" FontSize="25">Код книги</Label>
+        <TextBox Name="bookCodeTextBox" Width="500" FontSize="23" Height="40" Margin="90,224,210,486"></TextBox>
 
 
-        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,-180,0,0" FontSize="25">Издатель</Label>
-        <TextBox Name="isdatelBookTextBox" Width="500" FontSize="25" Height="40" Margin="-120,-90,0,0"></TextBox>
+        <Label Width="400" VerticalAlignment="Top" Height="40" FontFamily="Century Gothic" Margin="90,266,310,0" FontSize="25">Автор</Label>
+        <TextBox Name="bookAuthorTextBox" VerticalAlignment="Center" Width="500" FontSize="25" Height="40" Margin="90,306,210,404" />
 
-        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,80,0,0" FontSize="25">Категория (номер)</Label>
-        <TextBox Name="categoryText" Width="500" FontSize="25" Height="40" Margin="-120,170,0,0"></TextBox>
-
-        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,360,0,0" FontSize="25">Язык</Label>
-        <ComboBox Name="langText" Width="500" Height="40" FontFamily="Century Gothic" FontSize="25" Margin="-120,450,0,0">
-            <ComboBoxItem Content="Русский"/>
+        <Label Width="400" VerticalAlignment="Top" Height="40" FontFamily="Century Gothic" Margin="90,389,310,0" FontSize="25">Кол-во книг</Label>
+        <TextBox Name="amountText" Width="500" FontSize="23" Height="40" Margin="90,429,210,281"></TextBox>
+        <Button Width="150" Height="50" FontFamily="Century Gothic" Margin="0,632,25,32" Content="Готово" Click="addBookClick" FontSize="25" ></Button>
+        <Label Width="400" VerticalAlignment="Top" Height="40" FontFamily="Century Gothic" Margin="90,461,310,0" FontSize="25" Content="Категория книги(номер)"/>
+        <TextBox x:Name="bookCategoryNumberTextBox" Width="500" FontSize="23" Height="40" Margin="90,501,210,209"/>
+        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="90,540,310,170" FontSize="25" Content="Язык книги"/>
+        <ComboBox Name="bookLanguage" Width="180" Height="30" FontFamily="Century Gothic" FontSize="17" Margin="90,580,530,140">
+            <ComboBoxItem Content="Русский" IsSelected="True"/>
             <ComboBoxItem Content="Казахский"/>
             <ComboBoxItem Content="Другой"/>
         </ComboBox>
-
-        <Label Width="400" Height="40" FontFamily="Century Gothic" Margin="-220,640,0,0" FontSize="25">Кол-во книг</Label>
-        <TextBox Name="amountText" Width="500" FontSize="25" Height="40" Margin="-120,730,0,0"></TextBox>
-
-        
-        <Button Width="150" Height="50" FontFamily="Century Gothic" Margin="0,932,25,32" Content="Готово" Click="addBookClick" FontSize="25" ></Button>
-
     </Grid>
 </Window>

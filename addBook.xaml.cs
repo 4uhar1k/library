@@ -32,8 +32,8 @@ namespace library
             string publisher = isdatelBookTextBox.Text;
             long code = Convert.ToInt64(bookCodeTextBox.Text);
             string author = bookAuthorTextBox.Text.ToUpper();
-            int category = Convert.ToInt32(categoryText.Text);
-            string language = langText.Text;
+            int category = Convert.ToInt32(bookCategoryNumberTextBox.Text);
+            string language = bookLanguage.Text;
             int amount = Convert.ToInt32(amountText.Text);
             
             Book book = null;
