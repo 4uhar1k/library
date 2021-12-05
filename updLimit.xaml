@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:library"
         mc:Ignorable="d"
-        Title="updLimit" Height="250" Width="400">
+        Title="updLimit" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Height="250" Width="400">
     <Grid>
-        <DatePicker Name="datePicker" HorizontalAlignment="Left" Margin="104,18,0,0" FontSize="20" VerticalAlignment="Top" Height="125" Width="189"/>
+        <Button Width="35" Height="40" Margin="350,-170,0,0" Click="close" FontSize="30" Foreground="#FF565656" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6" >X</Button>
+        <Button Width="35" Height="40" Margin="250,-170,0,0" Click="min" FontSize="30" Foreground="#FF565656" Background="#FFC5D0E6" BorderBrush="#FFC5D0E6" >-</Button>
+        <DatePicker  Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Name="datePicker" HorizontalAlignment="Left" Margin="104,18,0,0" FontSize="20" VerticalAlignment="Top" Height="125" Width="189"/>
         <Button Width="100" Height="50" Margin="0,140,0,0" Content="Готово" FontSize="20" Click="readyButton"></Button>
     </Grid>
 </Window>

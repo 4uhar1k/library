@@ -115,7 +115,6 @@ namespace library
         public void firstopen(object sender, EventArgs e)
         {
             searchType.SelectionChanged += search;
-            //searchType.SelectionChanged -= firstopen;
 
         }
 

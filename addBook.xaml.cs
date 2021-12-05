@@ -27,6 +27,13 @@ namespace library
 
         public void addBookClick(object sender, EventArgs e)
         {
+            long m;
+            int q;
+            if (bookNameTextBox.Text == "" || isdatelBookTextBox.Text == "" || bookCodeTextBox.Text == "" || Int64.TryParse(bookCodeTextBox.Text, out m) == false || bookAuthorTextBox.Text == "" || bookCategoryNumberTextBox.Text == "" || amountText.Text == "" || Int32.TryParse(bookCategoryNumberTextBox.Text, out q) == false || Int32.TryParse(amountText.Text, out q) == false)
+            {
+                MessageBox.Show("Данные введены некорректно");
+                return;
+            }
             db = new ApplicationContext();
             string name = bookNameTextBox.Text.ToUpper();
             string publisher = isdatelBookTextBox.Text;

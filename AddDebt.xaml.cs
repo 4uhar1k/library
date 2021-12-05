@@ -28,7 +28,7 @@ namespace library
 
         long bookcode;
         string namet, surnamet, gradet;
-        int dayst;
+        int dayst, q;
         public AddDebt(long bookcode, string name, string surname, string grade, int days): this()
         {
             this.bookcode = bookcode;
@@ -64,6 +64,11 @@ namespace library
 
         public void addInfo(object sender, EventArgs e)
         {
+            if (nameText.Text == "" || surnameText.Text == "" || bookText.Content.ToString() == "Нажмите на кнопку выбора" || gradeText.Text == "" || limitText.Text == "" || Convert.ToInt32(limitText.Text) < 1 || Int32.TryParse(limitText.Text, out q) == false)
+            {
+                MessageBox.Show("Данные введены некорректно");
+                return;
+            }
             db = new ApplicationContext();
             string name = nameText.Text.ToUpper();
             string surname = surnameText.Text.ToUpper();
@@ -117,7 +122,7 @@ namespace library
         public void chooseBookClick (object sender, EventArgs e)
         {
             this.Hide();
-            BookList bookList = new BookList("adddebt", nameText.Text, surnameText.Text, gradeText.Text, ((limitText.Text == "") ? (0) : (Convert.ToInt32(limitText.Text))));
+            BookList bookList = new BookList("adddebt", nameText.Text, surnameText.Text, gradeText.Text, ((limitText.Text == "" || Int32.TryParse(limitText.Text, out q) == false) ? (0) : (Convert.ToInt32(limitText.Text))));
             bookList.Show();
         }
 

@@ -31,7 +31,15 @@ namespace library
             this.currentid = currentid;
         }
 
+        public void close(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
 
+        public void min(object sender, EventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
         public void readyButton(object sender, EventArgs e)
         {
             db = new ApplicationContext();
@@ -39,6 +47,13 @@ namespace library
             if (s == "")
             {
                 MessageBox.Show("Выберите дату");
+                return;
+            }
+            DateTime t1 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime t2 = Convert.ToDateTime(s);
+            if (t2<t1)
+            {
+                MessageBox.Show("Введена прошедшая дата");
                 return;
             }
             Debt user;
