@@ -145,6 +145,7 @@ namespace library
                         user = db.debts.Where(b => b.currentid == curr).FirstOrDefault();
                         user.debtstate += 3;
                         user.currentid = 0;
+                        user.return_date = DateTime.Now.ToString("dd.MM.yyyy");
                         book = db.books.Where(b => b.code == user.bookcode).FirstOrDefault();
                         book.amount++;
                         book.namount--;
