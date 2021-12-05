@@ -28,6 +28,7 @@ namespace library
         Label[] avArray;
         Label[] navArray;
         Button[] chooseArray;
+        Label[] langArray;
         int n = 0;
 
         public BookList()
@@ -68,7 +69,7 @@ namespace library
             avArray = new Label[10] { Avail1, Avail2, Avail3, Avail4, Avail5, Avail6, Avail7, Avail8, Avail9, Avail10 };
             navArray = new Label[10] { NAvail1, NAvail2, NAvail3, NAvail4, NAvail5, NAvail6, NAvail7, NAvail8, NAvail9, NAvail10 };
             chooseArray = new Button[10] { choose1, choose2, choose3, choose4, choose5, choose6, choose7, choose8, choose9, choose10 };
-
+            langArray = new Label[10] {Lang1, Lang2, Lang3, Lang4, Lang5, Lang6, Lang7, Lang8, Lang9, Lang10 };
             db = new ApplicationContext();
             int i = 0, maxId = 0;
 
@@ -109,7 +110,7 @@ namespace library
                         avArray[i].Foreground = Brushes.Red;
                     
                     navArray[i].Content = book.namount;
-
+                    langArray[i].Content = book.language;
 
                     i++;
 
@@ -195,6 +196,7 @@ namespace library
                         pubArray[i].Content = book.publisher;
                         avArray[i].Content = book.amount;
                         navArray[i].Content = book.namount;
+                        langArray[i].Content = book.language;
                         i++;
 
                     }
@@ -255,7 +257,7 @@ namespace library
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
                     navArray[i].Content = book.namount;
-
+                    langArray[i].Content = book.language;
                     i++;
 
                 }
@@ -311,7 +313,7 @@ namespace library
                     pubArray[i].Content = book.publisher;
                     avArray[i].Content = book.amount;
                     navArray[i].Content = book.namount;
-
+                    langArray[i].Content = book.language;
                     i++;
 
                 }
