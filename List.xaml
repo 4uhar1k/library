@@ -21,7 +21,7 @@
             <Button Name="next" Width="204" Height="50" Margin="-420,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="nextpage">Вперед</Button>
            
             <Button Name="prev" Width="204" Height="50" Margin="-1350,-50,0,0" FontFamily="Century Gothic" FontSize="20" Click="previouspage">Назад</Button>
-            <CheckBox Name="debters" Width="130"  Margin="-1000,0,0,0" FontFamily="Century Gothic" Click="onlyDebt" >Только должники</CheckBox>
+            <CheckBox Name="debters" Width="130"  Margin="-1000,0,0,0" FontFamily="Century Gothic" Click="search" >Только должники</CheckBox>
 
             <Label Width="150"  FontSize="20" Margin="-1400,20,0,0" FontFamily="Century Gothic">Имя</Label>
             <Label Width="150"  FontSize="20" Margin="-1070,-37,-35,-12" FontFamily="Century Gothic">Фамилия</Label>

@@ -219,7 +219,7 @@ namespace library
                         }
                     }    
                 }
-                if (t4 < t2)
+                if (t4 < t2 && debt.debtstate>=3)
                 {
                     c32++;
                 }

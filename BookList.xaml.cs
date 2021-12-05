@@ -31,6 +31,65 @@ namespace library
         Label[] langArray;
         int n = 0;
 
+        public void mainLogic(int n)
+        {
+            int i = 0, maxId = 0;
+            next.Visibility = Visibility.Hidden;
+            prev.Visibility = Visibility.Hidden;
+            for (int j = 0; j < 10; j++)
+            {
+                stacks[j].Visibility = Visibility.Hidden;
+            }
+
+            foreach (Book book in db.books)
+            {
+
+                if (book.name.StartsWith(searchBar.Text.ToUpper()))
+                {
+                    maxId++;
+                    if (i <= 9)
+                    {
+                        stacks[i].Visibility = Visibility.Visible;
+
+                        nameArray[i].Content = book.name;
+                        authorArray[i].Content = book.author;
+                        codeArray[i].Content = book.code;
+                        long curr = Convert.ToInt64(codeArray[i].Content);
+                        if (window == "adddebt")
+                        {
+                            Book book1;
+                            using (ApplicationContext db = new ApplicationContext())
+                            {
+                                book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
+                            }
+                            if (book1.amount > 0)
+                                chooseArray[i].Visibility = Visibility.Visible;
+                            else
+                                chooseArray[i].Visibility = Visibility.Hidden;
+                        }
+
+                        else
+                            chooseArray[i].Visibility = Visibility.Hidden;
+                        pubArray[i].Content = book.publisher;
+                        avArray[i].Content = book.amount;
+                        navArray[i].Content = book.namount;
+                        langArray[i].Content = book.language;
+                        i++;
+
+                    }
+
+                }
+            }
+            if (maxId > n + 10)
+            {
+                next.Visibility = Visibility.Visible;
+            }
+            if (maxId - 10 < n && maxId - 10 > 0)
+            {
+                prev.Visibility = Visibility.Visible;
+            }
+        }
+
         public BookList()
         {
             InitializeComponent();
@@ -56,10 +115,7 @@ namespace library
             }
 
             stacks = new StackPanel[10] { panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10 };
-            for (int j = 0; j < 10; j++)
-            {
-                stacks[j].Visibility = Visibility.Hidden;
-            }
+            
             next.Visibility = Visibility.Hidden;
             prev.Visibility = Visibility.Hidden;
             nameArray = new Label[10] { Name1, Name2, Name3, Name4, Name5, Name6, Name7, Name8, Name9, Name10 };
@@ -71,56 +127,9 @@ namespace library
             chooseArray = new Button[10] { choose1, choose2, choose3, choose4, choose5, choose6, choose7, choose8, choose9, choose10 };
             langArray = new Label[10] {Lang1, Lang2, Lang3, Lang4, Lang5, Lang6, Lang7, Lang8, Lang9, Lang10 };
             db = new ApplicationContext();
-            int i = 0, maxId = 0;
 
-            foreach (Book book in db.books)
-            {
-                if (book != null && i <= 9)
-                {
-                    stacks[i].Visibility = Visibility.Visible;
-                    
-                    
-                    nameArray[i].Content = book.name;
-                    authorArray[i].Content = book.author;
-                    codeArray[i].Content = book.code;
-                    long curr = Convert.ToInt64(codeArray[i].Content);
-                    if (window == "adddebt")
-                    {
-                        Book book1;
-                        using (ApplicationContext db = new ApplicationContext())
-                        {
-                            book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
-                        }
-                        if (book1.amount > 0)
-                            chooseArray[i].Visibility = Visibility.Visible;
-                        else
-                            chooseArray[i].Visibility = Visibility.Hidden;
-                    }
 
-                    else
-                        chooseArray[i].Visibility = Visibility.Hidden;
-                    pubArray[i].Content = book.publisher;
-                    avArray[i].Content = book.amount;
-                    Book book2;
-                    using (ApplicationContext db = new ApplicationContext())
-                    {
-                        book2 = db.books.Where(b => b.code == curr).FirstOrDefault();
-                    }
-                    if (book2.amount == 0)
-                        avArray[i].Foreground = Brushes.Red;
-                    
-                    navArray[i].Content = book.namount;
-                    langArray[i].Content = book.language;
-
-                    i++;
-
-                }
-                maxId++;
-            }
-            if (maxId > n + 10)
-            {
-                next.Visibility = Visibility.Visible;
-            }
+            mainLogic(n);
         }
 
         
@@ -153,181 +162,19 @@ namespace library
         }
         public void search(object sender, EventArgs e)
         {
-            string s = searchBar.Text.ToUpper();
-
-
-            int i = 0, maxId = 0;
-            next.Visibility = Visibility.Hidden;
-            prev.Visibility = Visibility.Hidden;
-            for (int j = 0; j < 10; j++)
-            {
-                stacks[j].Visibility = Visibility.Hidden;
-            }
-
-            foreach (Book book in db.books)
-            {
-                
-                if (book.name.StartsWith(searchBar.Text.ToUpper()))//if (debt.surname.Contains(searchBar.Text.ToUpper()))
-                {
-                    maxId++;
-                    if (i<=9)
-                    {
-                        stacks[i].Visibility = Visibility.Visible;
-                        
-                        nameArray[i].Content = book.name;
-                        authorArray[i].Content = book.author;
-                        codeArray[i].Content = book.code;
-                        long curr = Convert.ToInt64(codeArray[i].Content);
-                        if (window == "adddebt")
-                        {
-                            Book book1;
-                            using (ApplicationContext db = new ApplicationContext())
-                            {
-                                book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
-                            }
-                            if (book1.amount > 0)
-                                chooseArray[i].Visibility = Visibility.Visible;
-                            else
-                                chooseArray[i].Visibility = Visibility.Hidden;
-                        }
-
-                        else
-                            chooseArray[i].Visibility = Visibility.Hidden;
-                        pubArray[i].Content = book.publisher;
-                        avArray[i].Content = book.amount;
-                        navArray[i].Content = book.namount;
-                        langArray[i].Content = book.language;
-                        i++;
-
-                    }
-                    
-
-
-                    
-                    
-                }
-
-
-            }
-            if (maxId > n + 10)
-            {
-                next.Visibility = Visibility.Visible;
-            }
-            if (maxId - 10 < n && maxId - 10 > 0)
-            {
-                prev.Visibility = Visibility.Visible;
-            }
+            mainLogic(n); 
         }
         public void nextpage(object sender, EventArgs e)
         {
-            for (int j = 0; j < 10; j++)
-            {
-                stacks[j].Visibility = Visibility.Hidden;
-            }
-            next.Visibility = Visibility.Hidden;
-            prev.Visibility = Visibility.Hidden;
             db = new ApplicationContext();
-            int i = 0;
             n += 10;
-            int maxId = 0;
-            foreach (Book book in db.books)
-            {
-                if (book != null && book.name.StartsWith(searchBar.Text.ToUpper()) && book.currentid > n && book.currentid <= n + 10)
-                {
-                    stacks[i].Visibility = Visibility.Visible;
-                    nameArray[i].Content = book.name;
-                    authorArray[i].Content = book.author;
-                    codeArray[i].Content = book.code;
-                    long curr = Convert.ToInt64(codeArray[i].Content);
-                    if (window == "adddebt")
-                    {
-                        Book book1;
-                        using (ApplicationContext db = new ApplicationContext())
-                        {
-                            book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
-                        }
-                        if (book1.amount > 0)
-                            chooseArray[i].Visibility = Visibility.Visible;
-                        else
-                            chooseArray[i].Visibility = Visibility.Hidden;
-                    }
-
-                    else
-                        chooseArray[i].Visibility = Visibility.Hidden;
-                    pubArray[i].Content = book.publisher;
-                    avArray[i].Content = book.amount;
-                    navArray[i].Content = book.namount;
-                    langArray[i].Content = book.language;
-                    i++;
-
-                }
-                maxId++;
-
-            }
-            if (maxId > n + 10)
-            {
-                next.Visibility = Visibility.Visible;
-            }
-            if (maxId - 10 < n && maxId - 10 > 0)
-            {
-                prev.Visibility = Visibility.Visible;
-            }
+           mainLogic(n);
         }
         public void previouspage(object sender, EventArgs e)
         {
-            for (int j = 0; j < 10; j++)
-            {
-                stacks[j].Visibility = Visibility.Hidden;
-            }
-            next.Visibility = Visibility.Hidden;
-            prev.Visibility = Visibility.Hidden;
             db = new ApplicationContext();
-            int i = 0;
             n -= 10;
-            int maxId = 0;
-            foreach (Book book in db.books)
-            {
-                if (book != null && book.name.StartsWith(searchBar.Text.ToUpper()) && book.currentid > n && book.currentid <= n + 10)
-                {
-                    stacks[i].Visibility = Visibility.Visible;
-
-                    nameArray[i].Content = book.name;
-                    authorArray[i].Content = book.author;
-                    codeArray[i].Content = book.code;
-                    long curr = Convert.ToInt64(codeArray[i].Content);
-                    if (window == "adddebt")
-                    {
-                        Book book1;
-                        using (ApplicationContext db = new ApplicationContext())
-                        {
-                            book1 = db.books.Where(b => b.code == curr).FirstOrDefault();
-                        }
-                        if (book1.amount > 0)
-                            chooseArray[i].Visibility = Visibility.Visible;
-                        else
-                            chooseArray[i].Visibility = Visibility.Hidden;
-                    }
-
-                    else
-                        chooseArray[i].Visibility = Visibility.Hidden;
-                    pubArray[i].Content = book.publisher;
-                    avArray[i].Content = book.amount;
-                    navArray[i].Content = book.namount;
-                    langArray[i].Content = book.language;
-                    i++;
-
-                }
-                maxId++;
-
-            }
-            if (maxId > n + 10)
-            {
-                next.Visibility = Visibility.Visible;
-            }
-            if (maxId - 10 < n && maxId - 10 > 0)
-            {
-                prev.Visibility = Visibility.Visible;
-            }
+            mainLogic(n);
         }
 
         public void chooseBook(object sender, EventArgs e)
