@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Win32;
+using System.Linq;
 
 namespace library
 {   
@@ -73,6 +74,8 @@ namespace library
 
         public void report(object sender, EventArgs e)
         {
+            ApplicationContext db = new ApplicationContext();
+
             Excel.Application ex = new Microsoft.Office.Interop.Excel.Application();
 
             ex.Visible = false;
@@ -93,14 +96,14 @@ namespace library
             Excel.Range c2 = worksheet.Cells[1, 2];
             Excel.Range c3 = worksheet.Cells[1, 3];
             Excel.Range c4 = worksheet.Cells[1, 14];
-            Excel.Range c33 = worksheet.Cells[3, 1];
+            Excel.Range c333 = worksheet.Cells[3, 1];
             worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[2, 1]].Merge();
             worksheet.Range[worksheet.Cells[1, 2], worksheet.Cells[2, 2]].Merge();
             worksheet.Range[worksheet.Cells[1, 3], worksheet.Cells[1, 13]].Merge();
             worksheet.Range[worksheet.Cells[1, 14], worksheet.Cells[1, 16]].Merge();
             c1.EntireColumn.ColumnWidth = 26;
             c2.EntireColumn.ColumnWidth = 26;
-            c33.RowHeight = 36;
+            c333.RowHeight = 36;
             
             c1.Value = "Всего выдано";
             c2.Value = "Всего возвращено";
@@ -144,6 +147,116 @@ namespace library
             c2.Style.Orientation = Excel.XlOrientation.xlHorizontal;
             c3.Style.Orientation = Excel.XlOrientation.xlHorizontal;
             c4.Style.Orientation = Excel.XlOrientation.xlHorizontal;
+
+            //теперь расчёты
+            int c31 = 0, c32 = 0, c33 = 0, c34 = 0, c35 = 0, c36 = 0, c37 = 0, c38 = 0, c39 = 0, c310 = 0, c311 = 0, c312 = 0, c313 = 0, c314 = 0, c315 = 0, c316 = 0;
+            DateTime t1 = DateTime.Now.AddMonths(-1);
+            t1.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime t2 = DateTime.Now.Date.Add(new TimeSpan(0, 0, 0));
+            
+            foreach (Debt debt in db.debts)
+            {
+                DateTime t3 = Convert.ToDateTime(debt.take_date);
+                DateTime t4 = Convert.ToDateTime(debt.return_date);
+                if (t3>=t1)
+                {
+                    c31++;
+                    Book book = null;
+                    using (ApplicationContext db1 = new ApplicationContext())
+                    {
+                        book = db.books.Where(b => b.code == debt.bookcode).FirstOrDefault();
+                        switch(book.category)
+                        {
+                            case 2:
+                                c33++;
+                                break;
+                            case 3:
+                                c34++;
+                                break;
+                            case 5:
+                                c35++;
+                                break;
+                            case 6:
+                                c36++;
+                                break;
+                            case 7:
+                                c37++;
+                                break;
+                            case 74:
+                                c38++;
+                                break;
+                            case 75:
+                                c39++;
+                                break;
+                            case 81:
+                                c310++;
+                                break;
+                            case 83:
+                                c310++;
+                                break;
+                            case 84:
+                                c311++;
+                                break;
+                            case 85:
+                                c312++;
+                                break;
+                            case 9:
+                                c313++;
+                                break;
+                        }
+
+                        switch (book.language)
+                        {
+                            case "Казахский":
+                                c314++;
+                                break;
+                            case "Русский":
+                                c315++;
+                                break;
+                            case "Другой":
+                                c316++;
+                                break;
+                        }
+                    }    
+                }
+                if (t4 < t2)
+                {
+                    c32++;
+                }
+
+                Excel.Range cc31 = worksheet.Cells[3, 1];
+                Excel.Range cc32 = worksheet.Cells[3, 2];
+                Excel.Range cc33 = worksheet.Cells[3, 3];
+                Excel.Range cc34 = worksheet.Cells[3, 4];
+                Excel.Range cc35 = worksheet.Cells[3, 5];
+                Excel.Range cc36 = worksheet.Cells[3, 6];
+                Excel.Range cc37 = worksheet.Cells[3, 7];
+                Excel.Range cc38 = worksheet.Cells[3, 8];
+                Excel.Range cc39 = worksheet.Cells[3, 9];
+                Excel.Range cc310 = worksheet.Cells[3, 10];
+                Excel.Range cc311 = worksheet.Cells[3, 11];
+                Excel.Range cc312 = worksheet.Cells[3, 12];
+                Excel.Range cc313 = worksheet.Cells[3, 13];
+                Excel.Range cc314 = worksheet.Cells[3, 14];
+                Excel.Range cc315 = worksheet.Cells[3, 15];
+                Excel.Range cc316 = worksheet.Cells[3, 16];
+                cc31.Value = c31;
+                cc32.Value = c32;
+                cc33.Value = c33;
+                cc34.Value = c34;
+                cc35.Value = c35;
+                cc36.Value = c36;
+                cc37.Value = c37;
+                cc38.Value = c38;
+                cc39.Value = c39;
+                cc310.Value = c310;
+                cc311.Value = c311;
+                cc312.Value = c312; 
+                cc313.Value = c313;
+                cc314.Value = c314;
+                cc315.Value = c315;
+                cc316.Value = c316;
+            }
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = @"C:\";      
