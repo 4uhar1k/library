@@ -70,7 +70,7 @@ namespace library
                             int n = book.amount;
                             book.amount = n + amount;
                             db.SaveChanges();
-                            MessageBox.Show("suka");
+                            MessageBox.Show("Книга успешно добавлена в базу");
                             break;
                     }
 

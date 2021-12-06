@@ -269,7 +269,7 @@ namespace library
             if (saveFileDialog1.ShowDialog() == true)
             {
                 workbook.SaveAs(saveFileDialog1.FileName);
-                MessageBox.Show("bebra");
+                MessageBox.Show("Отчет успешно сохранен");
             }
 
         }
