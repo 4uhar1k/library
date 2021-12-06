@@ -58,6 +58,12 @@ namespace library
                     db.books.Add(book1);
                     db.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена в базу");
+                    bookNameTextBox.Text = "";
+                    bookAuthorTextBox.Text = "";
+                    bookCategoryNumberTextBox.Text = "";
+                    bookCodeTextBox.Text = "";
+                    isdatelBookTextBox.Text = "";
+                    amountText.Text = "";
                 }
                 else
                 {
@@ -71,6 +77,12 @@ namespace library
                             book.amount = n + amount;
                             db.SaveChanges();
                             MessageBox.Show("Книга успешно добавлена в базу");
+                            bookNameTextBox.Text = "";
+                            bookAuthorTextBox.Text = "";
+                            bookCategoryNumberTextBox.Text = "";
+                            bookCodeTextBox.Text = "";
+                            isdatelBookTextBox.Text = "";
+                            amountText.Text = "";
                             break;
                     }
 
