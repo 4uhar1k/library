@@ -47,7 +47,7 @@ namespace library
                 if (book.name.StartsWith(searchBar.Text.ToUpper()))
                 {
                     maxId++;
-                    if (i <= 9)
+                    if (i <= 9 && (searchBar.Text == "") ? (book.currentid > n && book.currentid <= n + 10) : (true))
                     {
                         stacks[i].Visibility = Visibility.Visible;
 
@@ -84,7 +84,7 @@ namespace library
             {
                 next.Visibility = Visibility.Visible;
             }
-            if (maxId - 10 < n && maxId - 10 > 0)
+            if (n - 10 >= 0)
             {
                 prev.Visibility = Visibility.Visible;
             }
@@ -162,6 +162,7 @@ namespace library
         }
         public void search(object sender, EventArgs e)
         {
+            n = 0;
             mainLogic(n); 
         }
         public void nextpage(object sender, EventArgs e)

@@ -46,7 +46,7 @@ namespace library
                 if (((searchType.SelectionBoxItem.ToString() == "По фамилиям") ? (debt.surname.StartsWith(searchBar.Text.ToUpper())) : (debt.book.StartsWith(searchBar.Text.ToUpper()))) && debt.debtstate >= 3)//if (debt.surname.Contains(searchBar.Text.ToUpper()))
                 {
                     maxId++;
-                    if (i <= 9)
+                    if (i <= 9 && (searchBar.Text == "") ? (debt.currentid>n && debt.currentid <=n+10) : (true))
                     {
                         stacks[i].Visibility = Visibility.Visible;
                         nameArray[i].Content = debt.name;
@@ -84,7 +84,7 @@ namespace library
             {
                 next.Visibility = Visibility.Visible;
             }
-            if (maxId - 10 < n && maxId - 10 > 0)
+            if (n - 10 >= 0)
             {
                 prev.Visibility = Visibility.Visible;
             }
@@ -129,6 +129,7 @@ namespace library
 
         public void search(object sender, EventArgs e)
         {
+            n = 0;
             mainLogic(n);
         }
 
